@@ -1,0 +1,6 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release-store.xcconfig"
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=$FLUTTER_APPLICATION_PATH/lib/main/main_store.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.easypay.easypay
+GOOGLE_SERVICE_INFO_FILE=GoogleServicePROD-Info.plist

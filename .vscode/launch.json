@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Development Debug",
+        "cwd": "easy_pay",
+        "request": "launch",
+        "type": "dart",
+        "program": "${workspaceFolder}/easy_pay/lib/main/main_dev.dart",
+        "codeLens": {
+          "for": ["run-file", "debug-file"],
+          "title": "Development ${debugType}"
+        },
+        "args": ["--flavor", "development"]
+      },
+      {
+        "name": "Development Release",
+        "cwd": "easy_pay",
+        "request": "launch",
+        "type": "dart",
+        "program": "${workspaceFolder}/easy_pay/lib/main/main_dev.dart",
+        "codeLens": {
+          "for": ["run-file", "debug-file"],
+          "title": "Development Release ${debugType}"
+        },
+        "args": ["--flavor", "development", "--release"]
+      },
+      {
+        "name": "Store Debug",
+        "cwd": "easy_pay",
+        "request": "launch",
+        "type": "dart",
+        "program": "${workspaceFolder}/easy_pay/lib/main/main_store.dart",
+        "codeLens": {
+          "for": ["run-file", "debug-file"],
+          "title": "Store ${debugType}"
+        },
+        "args": ["--flavor", "store"]
+      },
+      {
+        "name": "Store Release",
+        "cwd": "easy_pay",
+        "request": "launch",
+        "type": "dart",
+        "program": "${workspaceFolder}/easy_pay/lib/main/main_store.dart",
+        "codeLens": {
+          "for": ["run-file", "debug-file"],
+          "title": "Store Release ${debugType}"
+        },
+        "args": ["--flavor", "store", "--release"]
+      }
+    ]
+  }
+  

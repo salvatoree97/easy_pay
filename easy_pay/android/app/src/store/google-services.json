@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "54483731362",
+    "project_id": "app-iriscube-prd",
+    "storage_bucket": "app-iriscube-prd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54483731362:android:a3f6823077591b0687a8fb",
+        "android_client_info": {
+          "package_name": "com.iriscube.app.internal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54483731362-qcsr998udks9rci5vnn2fmie3fdtna9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9sbVMFVisJAckvM0GwZ35LBOwR2CqVtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54483731362-qcsr998udks9rci5vnn2fmie3fdtna9f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "54483731362-6bub2u8unfr2pi6f7bjth3bqqhqbgds7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.iriscube.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
