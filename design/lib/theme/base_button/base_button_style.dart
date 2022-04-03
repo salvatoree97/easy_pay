@@ -17,7 +17,7 @@ class BaseButtonStyle extends ButtonStyle {
 
   ///[defaultShape] for all buttons with borderRadius
   static final defaultShape = MaterialStateProperty.all(
-    RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
   );
 
   ///[defaultBackgroundColor] for all buttons with primary color

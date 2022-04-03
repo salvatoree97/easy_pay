@@ -1,4 +1,5 @@
-import 'package:features/features.dart';
+import 'package:easy_pay/app/navigation_service.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -6,11 +7,13 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeHelper.init(MediaQuery.of(context));
     return Scaffold(
       body: Center(
         child: ElevatedButton(
           child: const Text("prova"),
-          onPressed: () => ThemeModeProvider.instance.toggleTheme(),
+          onPressed: () =>
+              NavigationService.instance.push(AppRoutes.initialScreen),
         ),
       ),
     );

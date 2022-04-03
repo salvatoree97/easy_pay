@@ -1,4 +1,6 @@
 class Dimension {
+  static const defaulPadding = 16.0;
+
   static const double pt1 = 1;
   static const double pt2 = 2;
   static const double pt3 = 3;

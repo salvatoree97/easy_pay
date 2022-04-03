@@ -18,3 +18,4 @@ export 'package:common/firebase/push_notification_service.dart';
 export 'package:common/app/app_configuration.dart';
 export 'package:common/app/app_state.dart';
 export 'package:common/app/package_configuration.dart';
+export 'package:common/app/routes.dart';
