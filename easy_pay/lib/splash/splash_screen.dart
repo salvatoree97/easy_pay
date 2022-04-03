@@ -1,3 +1,4 @@
+import 'package:features/features.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -6,12 +7,10 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: ElevatedButton(
-            child: Text("prova"),
-            onPressed: () {},
-          ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("prova"),
+          onPressed: () => ThemeModeProvider.instance.toggleTheme(),
         ),
       ),
     );

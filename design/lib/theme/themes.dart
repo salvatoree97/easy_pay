@@ -94,13 +94,13 @@ extension ThemesStyleColorScheme on Themes {
     onPrimary: CustomColors.primaryBlue,
     secondary: CustomColors.secondaryGray,
     onSecondary: CustomColors.secondaryGray,
-    background: CustomColors.white,
-    onBackground: CustomColors.white,
+    background: CustomColors.black,
+    onBackground: CustomColors.black,
     surface: CustomColors.primaryBlue,
     onSurface: CustomColors.primaryBlue,
     error: CustomColors.red,
     onError: CustomColors.red,
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
   );
 }
 
