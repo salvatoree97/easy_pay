@@ -4,23 +4,36 @@ import 'package:easy_pay/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:common/common.dart';
 
-class EasyPayApp extends StatelessWidget {
+class EasyPayApp extends StatefulWidget {
   final Store store;
   const EasyPayApp({
     Key? key,
     required this.store,
   }) : super(key: key);
 
+  @override
+  State<EasyPayApp> createState() => _EasyPayAppState();
+}
+
+class _EasyPayAppState extends State<EasyPayApp> {
+  @override
+  void initState() {
+    super.initState();
+    ThemeModeProvider.instance.addListener(() {
+      setState(() {});
+    });
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return StoreProvider(
-      store: store,
+      store: widget.store,
       child: MaterialApp(
         title: 'EasyPay App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: Themes.lightTheme,
+        darkTheme: Themes.darkTheme,
+        themeMode: ThemeModeProvider.instance.currentTheme,
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [S.delegate],
         home: const SplashScreen(),

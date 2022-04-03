@@ -1,28 +1,32 @@
-import 'package:design/text_style/sf_pro_text_style.dart';
+import 'package:design/theme/color/custom_colors.dart';
+import 'package:design/theme/text_style/poppins_text_style.dart';
 import 'package:flutter/material.dart';
 
-///BaseButtonStyle
-///
+///[BaseButtonStyle]
 ///Base button class that contains default text style
 class BaseButtonStyle extends ButtonStyle {
-  static final MaterialStateProperty<TextStyle?> defaultTextStyle =
-      MaterialStateProperty.all(
-    const SFProTextStyle.withBold(fontDimension: 15),
+  ///[defaultTextStyle] use Poppins font
+  static final defaultTextStyle = MaterialStateProperty.all(
+    const PoppinstTextStyle.withBold(fontDimension: 15),
   );
 
+  ///[defaultPadding] for all buttons
   static final defaultPadding = MaterialStateProperty.all(
     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 13.0),
   );
 
+  ///[defaultShape] for all buttons with borderRadius
   static final defaultShape = MaterialStateProperty.all(
-    RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
   );
 
+  ///[defaultBackgroundColor] for all buttons with primary color
   static final defaultBackgroundColor =
-      MaterialStateProperty.all(Colors.blueAccent);
+      MaterialStateProperty.all(CustomColors.primaryBlue);
 
+  ///[defaultForegroundColor] for all buttons with foreground color
   static final defaultForegroundColor =
-      MaterialStateProperty.all(Colors.blueAccent);
+      MaterialStateProperty.all(CustomColors.white);
 
   BaseButtonStyle({
     required backgroundColor,
@@ -35,7 +39,7 @@ class BaseButtonStyle extends ButtonStyle {
           shape: defaultShape,
           overlayColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
-              return Colors.transparent; // Null to use the component's default.
+              return CustomColors.clear; // Null to use the component's default.
             },
           ),
         );
@@ -52,7 +56,7 @@ class BaseButtonStyle extends ButtonStyle {
           shape: defaultShape,
           overlayColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
-              return Colors.transparent; // Null to use the component's default.
+              return CustomColors.clear; // Null to use the component's default.
             },
           ),
         );
@@ -60,7 +64,7 @@ class BaseButtonStyle extends ButtonStyle {
   BaseButtonStyle.withBorderShape({
     backgroundColor,
     foregroundColor,
-    customBorderShape,
+    required customBorderShape,
   }) : super(
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
@@ -69,7 +73,7 @@ class BaseButtonStyle extends ButtonStyle {
           shape: customBorderShape,
           overlayColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
-              return Colors.transparent; // Null to use the component's default.
+              return CustomColors.clear; // Null to use the component's default.
             },
           ),
         );
@@ -77,7 +81,7 @@ class BaseButtonStyle extends ButtonStyle {
   BaseButtonStyle.withSide({
     backgroundColor,
     foregroundColor,
-    side,
+    required side,
   }) : super(
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
@@ -86,7 +90,7 @@ class BaseButtonStyle extends ButtonStyle {
           side: side,
           overlayColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
-              return Colors.transparent; // Null to use the component's default.
+              return CustomColors.clear; // Null to use the component's default.
             },
           ),
         );

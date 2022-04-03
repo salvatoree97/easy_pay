@@ -1,77 +1,79 @@
-import 'package:flutter/cupertino.dart';
+import 'package:design/theme/color/custom_colors.dart';
+import 'package:flutter/material.dart';
 
-class SFProTextStyle extends TextStyle {
-  static const fontSfPro = "SF-Pro-Display";
+class PoppinstTextStyle extends TextStyle {
+  static const poppins = "Poppins";
 
-  final Color? color;
+  @override
+  Color? get color => CustomColors.black;
   final double? fontDimension;
 
-  const SFProTextStyle({
-    this.color,
+  const PoppinstTextStyle({
+    newColor,
     required this.fontDimension,
   }) : super(
-          color: color,
+          color: newColor,
           fontSize: fontDimension,
-          fontFamily: fontSfPro,
+          fontFamily: poppins,
         );
 
-  const SFProTextStyle.withRegular({
-    this.color,
+  const PoppinstTextStyle.withRegular({
+    newColor,
     required this.fontDimension,
   }) : super(
-            color: color,
+            color: newColor,
             fontSize: fontDimension,
-            fontFamily: fontSfPro,
+            fontFamily: poppins,
             fontWeight: FontWeight.normal);
 
-  const SFProTextStyle.withItalic({
-    this.color,
+  const PoppinstTextStyle.withItalic({
+    newColor,
     required this.fontDimension,
   }) : super(
-          color: color,
+          color: newColor,
           fontSize: fontDimension,
-          fontFamily: fontSfPro,
+          fontFamily: poppins,
           fontStyle: FontStyle.italic,
         );
 
-  const SFProTextStyle.withMedium({
-    this.color,
+  const PoppinstTextStyle.withMedium({
+    newColor,
     required this.fontDimension,
   }) : super(
-          color: color,
+          color: newColor,
           fontSize: fontDimension,
-          fontFamily: fontSfPro,
+          fontFamily: poppins,
           fontWeight: FontWeight.w500,
         );
 
-  const SFProTextStyle.withBold({
-    this.color,
+  const PoppinstTextStyle.withBold({
+    newColor,
     required this.fontDimension,
   }) : super(
-          color: color,
+          color: newColor,
           fontSize: fontDimension,
-          fontFamily: fontSfPro,
+          fontFamily: poppins,
           fontWeight: FontWeight.bold,
         );
 
-  const SFProTextStyle.withSemiBold({
-    this.color,
+  const PoppinstTextStyle.withSemiBold({
+    newColor,
     required this.fontDimension,
   }) : super(
-          color: color,
+          color: newColor,
           fontSize: fontDimension,
-          fontFamily: fontSfPro,
+          fontFamily: poppins,
           fontWeight: FontWeight.w600,
         );
 
-  const SFProTextStyle.underlined({
-    this.color,
+  const PoppinstTextStyle.underlined({
+    newColor,
     required this.fontDimension,
     FontWeight? fontWeight,
   }) : super(
-          color: color,
+          color: newColor,
           fontSize: fontDimension,
-          fontFamily: fontSfPro,
+          fontFamily: poppins,
           decoration: TextDecoration.underline,
           fontWeight: fontWeight ?? FontWeight.w500,
         );
