@@ -9,7 +9,7 @@ class CustomFormWidget extends StatelessWidget {
   const CustomFormWidget({
     Key? key,
     required this.formState,
-    required List<Widget> this.children,
+    required this.children,
     this.scrollController,
     this.autovalidateMode,
   }) : super(key: key);
@@ -29,7 +29,7 @@ class CustomFormWidget extends StatelessWidget {
               key: formState,
               autovalidateMode: autovalidateMode,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: children,

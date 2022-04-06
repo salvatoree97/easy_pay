@@ -20,5 +20,7 @@ abstract class NavigationServiceInterface {
 
   BuildContext? get topContext;
 
+  BuildContext? get tabContext;
+
   Future<dynamic>? handlePendingRoute;
 }

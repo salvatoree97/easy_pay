@@ -1,14 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:common/firebase/firebase_auth_service.dart';
 
 class UserState {
   final bool isLoading;
   final bool error;
-  final firebase_auth.User? user;
+  final FirebaseUser? firebaseUser;
 
   UserState(
     this.isLoading,
     this.error,
-    this.user,
+    this.firebaseUser,
   );
 
   factory UserState.initial() => UserState(false, false, null);
@@ -16,12 +16,12 @@ class UserState {
   UserState copyWith({
     bool? isLoading,
     bool? error,
-    firebase_auth.User? user,
+    FirebaseUser? firebaseUser,
   }) {
     return UserState(
       isLoading ?? this.isLoading,
       error ?? this.error,
-      user ?? this.user,
+      firebaseUser ?? this.firebaseUser,
     );
   }
 
@@ -32,9 +32,12 @@ class UserState {
           runtimeType == other.runtimeType &&
           isLoading == other.isLoading &&
           error == other.error &&
-          user == other.user;
+          firebaseUser == other.firebaseUser;
 
   @override
   int get hashCode =>
-      isLoading.hashCode ^ user.hashCode ^ error.hashCode ^ user.hashCode;
+      isLoading.hashCode ^
+      firebaseUser.hashCode ^
+      error.hashCode ^
+      firebaseUser.hashCode;
 }

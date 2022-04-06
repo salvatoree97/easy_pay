@@ -2,7 +2,7 @@ class Regex {
   static final isPBValidRegex = RegExp("^[RPFrpf][0-9]{6}");
 
   static final isEmailRegex = RegExp(
-    r"""^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@reply.it""",
+    r"""^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$""",
   );
 
   static final isPasswordRegex = RegExp(

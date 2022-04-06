@@ -1,4 +1,6 @@
 import 'package:easy_pay/splash/splash_screen.dart';
+import 'package:easy_pay/tab_bar/tab_bar_provider.dart';
+import 'package:easy_pay/tab_bar/tab_screen.dart';
 import 'package:features/features.dart';
 import 'package:flutter/material.dart';
 import 'package:common/common.dart';
@@ -13,6 +15,58 @@ class RouterService {
       case AppRoutes.registrationFirstStepScreen:
         return MaterialPageRoute(
           builder: (_) => const RegistrationFirstStepScreen(),
+        );
+      case AppRoutes.registrationSecondStepScreen:
+        final json = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+          builder: (_) => RegistrationSecondStepScreen(
+            name: json.getRequiredKey('name'),
+            surname: json.getRequiredKey('surname'),
+            fiscalCode: json.getRequiredKey('fiscalCode'),
+          ),
+        );
+      case AppRoutes.registrationThirdStepScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RegistrationThirdStepScreen(),
+        );
+      case AppRoutes.tabScreen:
+        return ScalePageRoute(
+          type: ScaleType.fromSmallerToGreater,
+          builder: (ctx) => ChangeNotifierProvider(
+            create: (_) => TabBarProvider(
+              tabs: [
+                HomeElement(),
+                ProfileElement(),
+              ],
+            ),
+            child: const TabScreen(),
+          ),
+        );
+      case AppRoutes.homeScreen:
+        return ScalePageRoute(
+          type: ScaleType.fromSmallerToGreater,
+          builder: (ctx) => ChangeNotifierProvider(
+            create: (_) => TabBarProvider(
+              tabs: [
+                HomeElement(),
+                ProfileElement(),
+              ],
+            ),
+            child: const TabScreen(),
+          ),
+        );
+      case AppRoutes.profileScreen:
+        return ScalePageRoute(
+          type: ScaleType.fromSmallerToGreater,
+          builder: (ctx) => ChangeNotifierProvider(
+            create: (_) => TabBarProvider(
+              tabs: [
+                HomeElement(),
+                ProfileElement(),
+              ],
+            ),
+            child: const TabScreen(),
+          ),
         );
     }
     return MaterialPageRoute(

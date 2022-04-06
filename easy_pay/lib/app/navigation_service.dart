@@ -13,6 +13,9 @@ class NavigationService implements NavigationServiceInterface {
   Future? handlePendingRoute;
 
   @override
+  BuildContext? tabContext;
+
+  @override
   void pop<T extends Object>({T? value}) {
     if (topContext == null) return;
     Navigator.of(topContext!).pop(value);

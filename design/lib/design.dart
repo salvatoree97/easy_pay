@@ -13,9 +13,18 @@ export 'package:design/theme/dimension/dimension.dart';
 ///[Utils]
 export 'package:design/utils/size_helper.dart';
 
+///[Routes]
+export 'package:design/routes/scale_page_route.dart';
+
 ///[Widgets]
 export 'package:design/widgets/button/buttons_stack_widget.dart';
 export 'package:design/widgets/button/custom_elevated_button.dart';
 export 'package:design/widgets/loader/circle_indicator.dart';
 export 'package:design/widgets/base/custom_form_widget.dart';
 export 'package:design/widgets/base/base_screen.dart';
+export 'package:design/widgets/text_field/custom_form_text_field.dart';
+export 'package:design/widgets/app_bar/default_app_bar.dart';
+export 'package:design/widgets/base/result_base_screen.dart';
+export 'package:design/widgets/tab_bar/custom_tab_bar.dart';
+export 'package:design/widgets/tab_bar/tab_bar_element.dart';
+export 'package:design/widgets/tab_bar/tab_bar_navigator.dart';

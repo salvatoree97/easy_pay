@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:common/common.dart';
 
 class EasyPayApp extends StatefulWidget {
-  final Store store;
+  final Store<AppState> store;
   const EasyPayApp({
     Key? key,
     required this.store,
