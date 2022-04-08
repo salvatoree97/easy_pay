@@ -12,6 +12,11 @@ class RouterService {
         return MaterialPageRoute(
           builder: (_) => const InitialScreen(),
         );
+
+      case AppRoutes.loginScreen:
+        return MaterialPageRoute(
+          builder: (_) => const LoginScreen(),
+        );
       case AppRoutes.registrationFirstStepScreen:
         return MaterialPageRoute(
           builder: (_) => const RegistrationFirstStepScreen(),

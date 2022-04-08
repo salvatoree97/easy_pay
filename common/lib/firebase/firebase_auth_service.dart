@@ -9,4 +9,24 @@ class FirebaseAuthService {
 
   FirebaseUser? get currentUser =>
       firebase_auth.FirebaseAuth.instance.currentUser;
+
+  Future<firebase_auth.UserCredential> createUser({
+    required String email,
+    required String password,
+  }) {
+    return firebase_auth.FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  Future<firebase_auth.UserCredential> loginWith({
+    required String email,
+    required String password,
+  }) {
+    return firebase_auth.FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
 }

@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:common/app/app_state.dart';
 import 'package:bffe/bffe.dart';
+import 'package:common/firebase/firebase_auth_service.dart';
 import 'package:common/user/redux/action/user_actions.dart';
 import 'package:common/user/redux/service/set_user_dto.dart';
 import 'package:core/core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
@@ -22,14 +22,14 @@ ThunkAction<AppState> registrationThunk({
       Logger.instance.info(
           'Send createUserWithEmailAndPassword wiht: username: $username, password: $password');
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        await FirebaseAuthService.instance.createUser(
           email: username,
           password: password,
         );
         Logger.instance
-            .info('Firebase user: ${FirebaseAuth.instance.currentUser}');
+            .info('Firebase user: ${FirebaseAuthService.instance.currentUser}');
 
-        if (FirebaseAuth.instance.currentUser != null) {
+        if (FirebaseAuthService.instance.currentUser != null) {
           final dto = SetUserDTO(
             email: username,
             lastname: lastname,
@@ -41,7 +41,7 @@ ThunkAction<AppState> registrationThunk({
           Logger.instance.debug(user);
 
           store.dispatch(UserRegistrationSucceded(
-            firebaseUser: FirebaseAuth.instance.currentUser!,
+            firebaseUser: FirebaseAuthService.instance.currentUser!,
           ));
 
           //UserManager.instance.saveUsername(username);

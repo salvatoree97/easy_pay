@@ -9,6 +9,10 @@ class InitialScreen extends StatelessWidget {
         .push(AppRoutes.registrationFirstStepScreen);
   }
 
+  void _onLoginButtonPressed() {
+    PackageConfiguration.navigationService.push(AppRoutes.loginScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
@@ -52,7 +56,7 @@ class InitialScreen extends StatelessWidget {
                       const EdgeInsets.only(right: Dimension.defaulPadding),
                   width: SizeHelper.wp(42),
                   title: 'Login',
-                  onPressed: _onRegisterButtonPressed,
+                  onPressed: _onLoginButtonPressed,
                   style: CustomButtonTheme.secondaryElavatedButtonTheme.style,
                 ),
               ],

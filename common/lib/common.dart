@@ -29,3 +29,4 @@ export 'package:common/user/redux/thunk/registration_thunk.dart';
 export 'package:common/user/redux/thunk/reload_user_thunk.dart';
 export 'package:common/user/redux/thunk/email_verification_thunk.dart';
 export 'package:common/user/redux/thunk/fetch_user_thunk.dart';
+export 'package:common/user/redux/thunk/login_thunk.dart';
