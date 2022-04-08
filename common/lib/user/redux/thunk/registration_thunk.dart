@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:common/app/app_state.dart';
+import 'package:bffe/bffe.dart';
 import 'package:common/user/redux/action/user_actions.dart';
+import 'package:common/user/redux/service/set_user_dto.dart';
 import 'package:core/core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:redux/redux.dart';
@@ -9,6 +11,9 @@ import 'package:redux_thunk/redux_thunk.dart';
 ThunkAction<AppState> registrationThunk({
   required String username,
   required String password,
+  required String name,
+  required String lastname,
+  String? fiscalCode,
   File? userImage,
   required Function() onSuccess,
 }) =>
@@ -25,6 +30,16 @@ ThunkAction<AppState> registrationThunk({
             .info('Firebase user: ${FirebaseAuth.instance.currentUser}');
 
         if (FirebaseAuth.instance.currentUser != null) {
+          final dto = SetUserDTO(
+            email: username,
+            lastname: lastname,
+            name: name,
+          );
+
+          final user = await BffeDataService.setUser(dto);
+
+          Logger.instance.debug(user);
+
           store.dispatch(UserRegistrationSucceded(
             firebaseUser: FirebaseAuth.instance.currentUser!,
           ));

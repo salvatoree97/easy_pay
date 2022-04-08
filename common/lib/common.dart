@@ -5,6 +5,7 @@ export 'package:core/core.dart';
 export 'package:redux/redux.dart';
 export 'package:flutter_redux/flutter_redux.dart';
 export 'package:redux_thunk/redux_thunk.dart';
+export 'package:bffe/bffe.dart';
 
 ///[]
 export 'package:common/interceptors/oauth_interceptor.dart';
@@ -27,3 +28,4 @@ export 'package:common/user/redux/user_state.dart';
 export 'package:common/user/redux/thunk/registration_thunk.dart';
 export 'package:common/user/redux/thunk/reload_user_thunk.dart';
 export 'package:common/user/redux/thunk/email_verification_thunk.dart';
+export 'package:common/user/redux/thunk/fetch_user_thunk.dart';

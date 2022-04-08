@@ -18,11 +18,19 @@ ThunkAction<AppState> reloadUser({
       final FirebaseUser? currentUser =
           FirebaseAuthService.instance.currentUser;
       if (currentUser == null) {
+        Logger.instance.info('Current user is null');
         store.dispatch(UserFetchFailed());
         return;
       }
-      if (currentUser.emailVerified) {
-        store.dispatch(UserFetchSucceded(firebaseUser: currentUser));
-        onFinish();
+
+      try {
+        if (currentUser.emailVerified && currentUser.email != null) {
+          Logger.instance.info('Current user: $currentUser');
+          store.dispatch(UserRegistrationSucceded(firebaseUser: currentUser));
+          onFinish();
+        }
+      } catch (error) {
+        Logger.instance
+            .error('Reload user after sendEmailVerification with user: $error');
       }
     };

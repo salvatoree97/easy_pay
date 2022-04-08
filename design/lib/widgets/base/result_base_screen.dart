@@ -16,15 +16,16 @@ class ResultBaseScreen extends StatelessWidget {
   }) : super(key: key);
 
   double get _size {
-    return circleSize ?? SizeHelper.wp(80);
+    return circleSize ?? SizeHelper.wp(70);
   }
 
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(height: SizeHelper.hp(35)),
+          SizedBox(height: SizeHelper.hp(10)),
           Container(
             height: _size,
             width: _size,
@@ -40,8 +41,16 @@ class ResultBaseScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Text(description, style: Theme.of(context).textTheme.bodyMedium),
+          SizedBox(height: SizeHelper.hp(8)),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: Dimension.defaulPadding),
+            child: Text(
+              description,
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+          ),
           Expanded(child: Container()),
           CustomElevatedButton(
             title: buttonTitle,

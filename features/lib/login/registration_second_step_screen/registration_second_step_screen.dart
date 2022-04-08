@@ -3,13 +3,13 @@ import 'package:common/common.dart';
 
 class RegistrationSecondStepScreen extends StatefulWidget {
   final String name;
-  final String surname;
+  final String lastname;
   final String fiscalCode;
 
   const RegistrationSecondStepScreen({
     Key? key,
     required this.name,
-    required this.surname,
+    required this.lastname,
     required this.fiscalCode,
   }) : super(key: key);
 
@@ -69,9 +69,11 @@ class _RegistrationSecondStepScreenState
         registrationThunk(
           username: _emailController.text,
           password: _passwordController.text,
+          name: widget.name,
+          lastname: widget.lastname,
           userImage: null,
           onSuccess: () => PackageConfiguration.navigationService
-              .push(AppRoutes.registrationSecondStepScreen),
+              .push(AppRoutes.registrationThirdStepScreen),
         ),
       );
       // PackageConfiguration.navigationService.push(

@@ -45,6 +45,16 @@ class _RegistrationThirdStepScreenState
     _startTimer();
   }
 
+  void _onEmailNotConfirmed() {}
+
+  void _onError() {
+    PackageConfiguration.navigationService.popUntil((route) => route.isFirst);
+  }
+
+  void _onCompleted() {
+    PackageConfiguration.navigationService.pushAndReplace(AppRoutes.tabScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, FirebaseUser?>(
@@ -54,8 +64,11 @@ class _RegistrationThirdStepScreenState
         Logger.instance
             .info('User model is confirmed: ${newUser?.emailVerified}');
         if (newUser?.emailVerified ?? false) {
-          PackageConfiguration.navigationService
-              .pushAndRemoveUntil(AppRoutes.tabScreen, (p0) => true);
+          StoreProvider.of(context).dispatch(fetchUserThunk(
+            onError: _onError,
+            onEmailNotConfirmed: _onEmailNotConfirmed,
+            onSuccess: _onCompleted,
+          ));
         }
       },
       builder: (ctx, vm) => ResultBaseScreen(

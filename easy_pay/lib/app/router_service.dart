@@ -21,13 +21,14 @@ class RouterService {
         return MaterialPageRoute(
           builder: (_) => RegistrationSecondStepScreen(
             name: json.getRequiredKey('name'),
-            surname: json.getRequiredKey('surname'),
+            lastname: json.getRequiredKey('lastname'),
             fiscalCode: json.getRequiredKey('fiscalCode'),
           ),
         );
       case AppRoutes.registrationThirdStepScreen:
         return MaterialPageRoute(
           builder: (_) => const RegistrationThirdStepScreen(),
+          fullscreenDialog: true,
         );
       case AppRoutes.tabScreen:
         return ScalePageRoute(

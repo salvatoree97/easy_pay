@@ -14,11 +14,11 @@ class _RegistrationFirstStepScreenState
   late GlobalKey<FormState> _formState;
   late AutovalidateMode _autovalidateMode;
   late FocusNode _nameFocusNode;
-  late FocusNode _surnameFocusNode;
+  late FocusNode _lastnameFocusNode;
   late FocusNode _fiscalCodeNode;
 
   late TextEditingController _nameController;
-  late TextEditingController _surnameController;
+  late TextEditingController _lastnameController;
   late TextEditingController _fiscalCodeController;
 
   @override
@@ -28,12 +28,12 @@ class _RegistrationFirstStepScreenState
     _autovalidateMode = AutovalidateMode.disabled;
 
     _nameFocusNode = FocusNode();
-    _surnameFocusNode = FocusNode();
+    _lastnameFocusNode = FocusNode();
     _fiscalCodeNode = FocusNode();
 
     _nameController = TextEditingController()
       ..addListener(_textControllerListner);
-    _surnameController = TextEditingController()
+    _lastnameController = TextEditingController()
       ..addListener(_textControllerListner);
     _fiscalCodeController = TextEditingController()
       ..addListener(_textControllerListner);
@@ -50,7 +50,7 @@ class _RegistrationFirstStepScreenState
 
   bool get _isButtonEnabled {
     return (_nameController.text.isNotEmpty &&
-        _surnameController.text.isNotEmpty &&
+        _lastnameController.text.isNotEmpty &&
         _fiscalCodeController.text.isNotEmpty);
   }
 
@@ -60,7 +60,7 @@ class _RegistrationFirstStepScreenState
         AppRoutes.registrationSecondStepScreen,
         arguments: {
           'name': _nameController.text,
-          'surname': _surnameController.text,
+          'lastname': _lastnameController.text,
           'fiscalCode': _fiscalCodeController.text,
         },
       );
@@ -97,20 +97,20 @@ class _RegistrationFirstStepScreenState
               IsFilled(errorMessage: 'Il valore è obbligatorio'),
             ],
             controller: _nameController,
-            onSubmitted: (_) => _surnameFocusNode.requestFocus(),
+            onSubmitted: (_) => _lastnameFocusNode.requestFocus(),
             focusNode: _nameFocusNode,
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
             title: 'Cognome',
             placeholder: 'Inserisci il cognome',
-            value: _surnameController.text,
+            value: _lastnameController.text,
             validationRules: [
               IsFilled(errorMessage: 'Il valore è obbligatorio'),
             ],
-            controller: _surnameController,
-            onSubmitted: (_) => _surnameFocusNode.requestFocus(),
-            focusNode: _surnameFocusNode,
+            controller: _lastnameController,
+            onSubmitted: (_) => _fiscalCodeNode.requestFocus(),
+            focusNode: _lastnameFocusNode,
           ),
           const SizedBox(height: 20),
           CustomFormTextField(

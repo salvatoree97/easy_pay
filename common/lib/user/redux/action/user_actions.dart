@@ -1,4 +1,5 @@
 import 'package:common/firebase/firebase_auth_service.dart';
+import 'package:common/user/models/user_model.dart';
 
 abstract class UserAction {}
 
@@ -19,9 +20,11 @@ class UserFetchRequested extends UserAction {}
 
 class UserFetchSucceded extends UserAction {
   final FirebaseUser firebaseUser;
+  final UserModel? user;
 
   UserFetchSucceded({
     required this.firebaseUser,
+    this.user,
   });
 }
 
