@@ -28,3 +28,4 @@ export 'package:design/widgets/base/result_base_screen.dart';
 export 'package:design/widgets/tab_bar/custom_tab_bar.dart';
 export 'package:design/widgets/tab_bar/tab_bar_element.dart';
 export 'package:design/widgets/tab_bar/tab_bar_navigator.dart';
+export 'package:design/widgets/text_field/password_suffix_widget.dart';

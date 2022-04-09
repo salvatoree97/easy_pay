@@ -9,8 +9,6 @@ class BffeFirestoreExecutor {
     BffeService<Encodable> service,
     List<BffeInterceptor> interceptors,
   ) {
-    interceptors.forEach((inter) => inter.onRequest(service));
-
     switch (service.type) {
       case CollectionRequestType.set:
         return BffeFirestoreExecutorWrapper.firestoreSet(
@@ -32,6 +30,7 @@ class BffeFirestoreExecutorWrapper {
     List<BffeInterceptor> interceptors,
   ) async {
     await service.throwableSerialize(service.initialObjectJson);
+    interceptors.forEach((inter) => inter.onRequest(service));
     try {
       final response = await FirebaseFirestore.instance
           .collection(service.collection)
@@ -51,6 +50,7 @@ class BffeFirestoreExecutorWrapper {
   ) async {
     final objectToSave =
         await service.throwableSerialize(service.initialObjectJson);
+    interceptors.forEach((inter) => inter.onRequest(service));
     try {
       final response = await FirebaseFirestore.instance
           .collection(service.collection)

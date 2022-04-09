@@ -30,6 +30,9 @@ class _RegistrationSecondStepScreenState
   late TextEditingController _passwordController;
   late TextEditingController _confirmPasswordController;
 
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
+
   @override
   void initState() {
     super.initState();
@@ -61,6 +64,14 @@ class _RegistrationSecondStepScreenState
     return (_emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty &&
         _confirmPasswordController.text.isNotEmpty);
+  }
+
+  void _setObscurePassword(bool isHidden) {
+    setState(() => _obscurePassword = isHidden);
+  }
+
+  void _setObscureConfirmPassword(bool isHidden) {
+    setState(() => _obscureConfirmPassword = isHidden);
   }
 
   void _onButtonPressed() {
@@ -141,6 +152,11 @@ class _RegistrationSecondStepScreenState
                       'La password deve contenere almeno una lettera maiuscola e un numero'),
               IsFilled(errorMessage: 'Il valore è obbligatorio')
             ],
+            obscureText: _obscurePassword,
+            suffixWidget: PasswordSuffixWidget(
+              onTap: _setObscurePassword,
+              isHidden: _obscurePassword,
+            ),
             controller: _passwordController,
             onSubmitted: (_) => _confirmPasswordFocusNode.requestFocus(),
             focusNode: _passwordFocusNode,
@@ -160,6 +176,11 @@ class _RegistrationSecondStepScreenState
               ),
               IsFilled(errorMessage: 'Il valore è obbligatorio')
             ],
+            obscureText: _obscureConfirmPassword,
+            suffixWidget: PasswordSuffixWidget(
+              onTap: _setObscureConfirmPassword,
+              isHidden: _obscureConfirmPassword,
+            ),
             controller: _confirmPasswordController,
             focusNode: _confirmPasswordFocusNode,
             onSubmitted: (_) => _onButtonPressed(),

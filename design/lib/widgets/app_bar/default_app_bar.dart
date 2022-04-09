@@ -53,6 +53,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: _leadingWidth,
       leading: _leading(context),
       title: Text(title),
+      centerTitle: true,
     );
   }
 

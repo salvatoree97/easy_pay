@@ -20,7 +20,7 @@ class BffeDebugInterceptor extends BffeInterceptor {
     DocumentSnapshot<Map<String, dynamic>>? response,
   ) {
     Logger.instance.info(
-      '🔵Response for service: ${service.toString()}: '
+      '🔵Response for service: ${service.toString()}'
       '\ndocId: ${response?.id}'
       '\ndocData: ${response?.data()}',
     );

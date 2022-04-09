@@ -17,6 +17,8 @@ class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
 
+  bool _obscurePassword = true;
+
   @override
   void initState() {
     super.initState();
@@ -60,6 +62,10 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     _autovalidateMode = AutovalidateMode.always;
     setState(() {});
+  }
+
+  void _setObscurePassword(bool isHidden) {
+    setState(() => _obscurePassword = isHidden);
   }
 
   void _onSuccess() {
@@ -113,6 +119,11 @@ class _LoginScreenState extends State<LoginScreen> {
             validationRules: [
               IsFilled(errorMessage: 'Il valore è obbligatorio'),
             ],
+            obscureText: _obscurePassword,
+            suffixWidget: PasswordSuffixWidget(
+              onTap: _setObscurePassword,
+              isHidden: _obscurePassword,
+            ),
             controller: _passwordController,
             onSubmitted: (_) => _onButtonPressed(),
             focusNode: _passwordFocusNode,
