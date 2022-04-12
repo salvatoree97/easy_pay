@@ -1,9 +1,8 @@
-import 'package:bffe/bffe.dart';
 import 'package:common/app/app_state.dart';
 import 'package:common/firebase/firebase_auth_service.dart';
 import 'package:common/user/models/user_model.dart';
 import 'package:common/user/redux/action/user_actions.dart';
-import 'package:common/user/redux/service/get_user_dto.dart';
+import 'package:common/user/redux/api/user_api.dart';
 import 'package:core/core.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
@@ -57,8 +56,7 @@ ThunkAction<AppState> fetchUserThunk({
 
     try {
       Logger.instance.info('Send UserApi.getUser for user: $user');
-      final dto = GetUserDTO(email: user.email ?? '');
-      final userModel = await BffeDataService.getUser(dto);
+      final userModel = await UserApi.getUser(email: user.email!);
       onSuccessHandler(user, userModel);
     } catch (error) {
       Logger.instance.error('Send UserApi.getUser failed with error: $error');

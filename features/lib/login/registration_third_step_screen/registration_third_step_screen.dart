@@ -64,7 +64,7 @@ class _RegistrationThirdStepScreenState
         Logger.instance
             .info('User model is confirmed: ${newUser?.emailVerified}');
         if (newUser?.emailVerified ?? false) {
-          StoreProvider.of(context).dispatch(fetchUserThunk(
+          StoreProvider.of<AppState>(context).dispatch(fetchUserThunk(
             onError: _onError,
             onEmailNotConfirmed: _onEmailNotConfirmed,
             onSuccess: _onCompleted,

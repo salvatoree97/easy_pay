@@ -1,6 +1,6 @@
 import 'dart:io';
+import 'package:common/firebase/firebase_auth_service.dart';
 import 'package:core/core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 ///[OAuthInterceptor] class is used to intercept request and push Bearer token if present
 class OAuthInterceptor extends BaseInterceptor {
@@ -11,8 +11,9 @@ class OAuthInterceptor extends BaseInterceptor {
       RequestOptions options, RequestInterceptorHandler handler) async {
     //Check if Bearer injection is required by service
     if (service.isUnderOAuth == true &&
-        FirebaseAuth.instance.currentUser != null) {
-      final token = await FirebaseAuth.instance.currentUser!.getIdToken();
+        FirebaseAuthService.instance.currentUser != null) {
+      final token =
+          await FirebaseAuthService.instance.currentUser!.getIdToken();
       options.headers[authorizationHeader] = 'Bearer $token';
     }
     super.onRequest(options, handler);
@@ -32,7 +33,8 @@ class OAuthInterceptor extends BaseInterceptor {
     // If not call refresh
     Logger.instance.warning('Refresh della sessione in corso');
     try {
-      final token = await FirebaseAuth.instance.currentUser?.getIdToken(true);
+      final token =
+          await FirebaseAuthService.instance.currentUser?.getIdToken(true);
       var options = err.requestOptions;
       options.headers[authorizationHeader] = 'Bearer $token';
       await _retry(options).catchError((error) {
