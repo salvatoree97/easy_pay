@@ -7,7 +7,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(title: 'Profile', showBack: false),
+      appBar: const DefaultAppBar(
+        title: 'Profile',
+        barStyle: AppBarStyle.textCenter,
+      ),
       body: Container(),
     );
   }

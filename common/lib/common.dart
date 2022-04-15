@@ -30,3 +30,10 @@ export 'package:common/user/redux/thunk/reload_user_thunk.dart';
 export 'package:common/user/redux/thunk/email_verification_thunk.dart';
 export 'package:common/user/redux/thunk/fetch_user_thunk.dart';
 export 'package:common/user/redux/thunk/login_thunk.dart';
+
+///[Retails]
+export 'package:common/retails/redux/reducer/retails_reducer.dart';
+export 'package:common/retails/redux/retails_state.dart';
+export 'package:common/retails/redux/thunk/fetch_retails_thunk.dart';
+export 'package:common/retails/redux/selector/retails_selector.dart';
+export 'package:common/retails/model/retail_model.dart';

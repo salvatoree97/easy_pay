@@ -112,8 +112,8 @@ class _RegistrationSecondStepScreenState
         children: [
           const SizedBox(height: 20),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: Dimension.defaulPadding),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Dimension.defaultPadding),
             child: Text(
               'Ciao ${widget.name}, ci siamo quasi!',
               style: Theme.of(context).textTheme.titleMedium,
@@ -121,8 +121,8 @@ class _RegistrationSecondStepScreenState
           ),
           const SizedBox(height: 20),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: Dimension.defaulPadding),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Dimension.defaultPadding),
             child: Text(
               'Crea le tue credenziali!',
               style: Theme.of(context).textTheme.labelSmall,

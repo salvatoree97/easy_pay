@@ -1,4 +1,6 @@
-import 'package:features/features.dart';
+import 'package:common/common.dart';
+import 'package:features/home/models/home_view_model.dart';
+import 'package:features/home/screen/home_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,9 +11,29 @@ class HomeScreen extends StatelessWidget {
     return BaseScreen(
       appBar: const DefaultAppBar(
         title: 'Home',
-        showBack: false,
+        barStyle: AppBarStyle.textLeft,
       ),
-      body: Container(),
+      body: StoreConnector<AppState, HomeViewModel>(
+        converter: (store) => HomeViewModel.fromStore(store),
+        onInit: (store) => store.dispatch(fetchRetailsThunk()),
+        builder: (ctx, viewModel) =>
+            ChangeNotifierProvider<HomeViewModel>.value(
+          value: viewModel,
+          builder: (context, _) => Column(
+            children: [
+              CustomFormTextField(
+                placeholder: 'Search',
+                value: viewModel.serchText ?? '',
+                isEnabled: !viewModel.state.isLoading && !viewModel.state.error,
+                onChanged: viewModel.updateSearchText,
+                margin: const EdgeInsets.symmetric(
+                    horizontal: Dimension.defaultPadding),
+              ),
+              HomeWidget(viewModel: Provider.of<HomeViewModel>(context)),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -46,14 +46,15 @@ class InitialScreen extends StatelessWidget {
             ButtonsStackWidget(
               buttons: [
                 CustomElevatedButton(
-                  padding: const EdgeInsets.only(left: Dimension.defaulPadding),
+                  padding:
+                      const EdgeInsets.only(left: Dimension.defaultPadding),
                   width: SizeHelper.wp(42),
                   title: 'Registrati',
                   onPressed: _onRegisterButtonPressed,
                 ),
                 CustomElevatedButton(
                   padding:
-                      const EdgeInsets.only(right: Dimension.defaulPadding),
+                      const EdgeInsets.only(right: Dimension.defaultPadding),
                   width: SizeHelper.wp(42),
                   title: 'Login',
                   onPressed: _onLoginButtonPressed,

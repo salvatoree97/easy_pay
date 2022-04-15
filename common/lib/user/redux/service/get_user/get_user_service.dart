@@ -21,7 +21,7 @@ class GetUserService extends Service<UserModel> {
   BaseContentType get contentType => CustomContentType.url;
 
   @override
-  String get mockPath => '/getUser';
+  String get mockPath => '/getUser_mock';
 
   @override
   String get path => '/getUser';

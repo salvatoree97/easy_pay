@@ -1,6 +1,6 @@
 class Dimension {
   static const toolbarHeight = 50.0;
-  static const defaulPadding = 16.0;
+  static const defaultPadding = 16.0;
   static const toolbarItemSize = 40.0;
 
   static const double pt1 = 1;

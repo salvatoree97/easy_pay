@@ -81,8 +81,8 @@ class _RegistrationFirstStepScreenState
         children: [
           const SizedBox(height: 20),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: Dimension.defaulPadding),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Dimension.defaultPadding),
             child: Text(
               'Inserisci i tuoi dati personali',
               style: Theme.of(context).textTheme.titleMedium,

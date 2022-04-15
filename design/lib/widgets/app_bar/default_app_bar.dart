@@ -1,31 +1,32 @@
-import 'package:design/design.dart';
+import 'package:design/theme/dimension/dimension.dart';
+import 'package:design/widgets/app_bar/app_bar_style.dart';
 import 'package:design/widgets/icons/custom_rounded_icon.dart';
 import 'package:flutter/material.dart';
 
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Function()? onBackTapped;
-  final bool showBack;
+  final AppBarStyle barStyle;
 
   const DefaultAppBar({
     Key? key,
     required this.title,
     this.onBackTapped,
-    this.showBack = true,
+    this.barStyle = AppBarStyle.back,
   }) : super(key: key);
 
   double? get _leadingWidth {
-    if (showBack) {
-      return Dimension.toolbarItemSize + Dimension.defaulPadding;
+    if (barStyle == AppBarStyle.back) {
+      return Dimension.toolbarItemSize + Dimension.defaultPadding;
     }
     return null;
   }
 
   Widget? _leading(BuildContext context) {
-    if (showBack) {
+    if (barStyle == AppBarStyle.back) {
       return Padding(
         padding: const EdgeInsets.only(
-          left: Dimension.defaulPadding,
+          left: Dimension.defaultPadding,
           top: Dimension.pt5,
           bottom: Dimension.pt5,
         ),
@@ -52,8 +53,12 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: Dimension.toolbarHeight,
       leadingWidth: _leadingWidth,
       leading: _leading(context),
-      title: Text(title),
-      centerTitle: true,
+      title: Text(title,
+          textAlign: barStyle == AppBarStyle.textLeft
+              ? TextAlign.left
+              : TextAlign.center),
+      centerTitle:
+          barStyle == AppBarStyle.textCenter || barStyle == AppBarStyle.back,
     );
   }
 

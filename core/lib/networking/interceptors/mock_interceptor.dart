@@ -94,6 +94,7 @@ class MockInterceptor extends BaseInterceptor {
               '\nheader: ${dioError.response?.headers}, '
               '\nbody: ${dioError.response?.data}',
             );
+            Logger.instance.error(exeption);
 
             handler.reject(dioError);
           }

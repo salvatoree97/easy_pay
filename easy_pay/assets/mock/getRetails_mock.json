@@ -1,0 +1,40 @@
+{
+  "retails": [
+    {
+      "id": "SmerPPBrj6GkclYvyKlh",
+      "description": "Vendiamo capi di abbigliamento",
+      "transactionsNumber": 0,
+      "discountPercentage": 10,
+      "name": "MetroStyle",
+      "totalAmount": "0",
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+      "id": "SmerPPBrj6GkclYvyKl1",
+      "description": "Vendiamo capi di abbigliamento",
+      "transactionsNumber": 0,
+      "discountPercentage": 10,
+      "name": "MetroStyle",
+      "totalAmount": "0",
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+      "id": "SmerPPBrj6GkclYvyKl2",
+      "description": "Vendiamo capi di abbigliamento",
+      "transactionsNumber": 0,
+      "discountPercentage": 10,
+      "name": "MetroStyle",
+      "totalAmount": "0",
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+      "id": "SmerPPBrj6GkclYvyKl3",
+      "description": "Vendiamo capi di abbigliamento",
+      "transactionsNumber": 0,
+      "discountPercentage": 10,
+      "name": "MetroStyle",
+      "totalAmount": "0",
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    }
+  ]
+}

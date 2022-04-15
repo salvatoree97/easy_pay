@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomFormTextField extends StatefulWidget with Validable<String?> {
-  final String title;
+  final String? title;
   final String placeholder;
   final String value;
   final FocusNode? focusNode;
@@ -38,9 +38,9 @@ class CustomFormTextField extends StatefulWidget with Validable<String?> {
 
   CustomFormTextField({
     Key? key,
-    required this.title,
     required this.placeholder,
     required this.value,
+    this.title,
     this.validationRules = const [],
     this.onChanged,
     this.readOnly = false,
@@ -168,17 +168,19 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
           const EdgeInsets.symmetric(horizontal: Dimension.pt20),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 5, bottom: 5),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                widget.title,
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ),
-          ),
+          widget.title != null
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 5, bottom: 5),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      widget.title!,
+                      textAlign: TextAlign.left,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
+                )
+              : Container(),
           TextFormField(
             onTap: widget.onTextFieldTap,
             textInputAction: widget.textInputAction,
