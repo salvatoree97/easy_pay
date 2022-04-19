@@ -5,12 +5,15 @@ class CustomRoundedIcon extends StatelessWidget {
   final double size;
   final Color? backgroundColor;
   final Color? iconColor;
+  final IconData? icon;
+
   const CustomRoundedIcon({
     Key? key,
     this.onTap,
     this.size = 30,
     this.backgroundColor,
     this.iconColor,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -25,7 +28,7 @@ class CustomRoundedIcon extends StatelessWidget {
           color: backgroundColor ?? Theme.of(context).colorScheme.secondary,
         ),
         child: Icon(
-          Icons.arrow_back,
+          icon ?? Icons.arrow_back,
           color: iconColor ?? Theme.of(context).colorScheme.onSecondary,
         ),
       ),

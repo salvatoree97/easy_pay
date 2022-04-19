@@ -74,6 +74,11 @@ class RouterService {
             child: const TabScreen(),
           ),
         );
+      case AppRoutes.retailDetailScreen:
+        final retailModel = settings.arguments as RetailModel;
+        return MaterialPageRoute(
+          builder: (_) => RetailDetailScreen(retailModel: retailModel),
+        );
     }
     return MaterialPageRoute(
       builder: (_) => const SplashScreen(),

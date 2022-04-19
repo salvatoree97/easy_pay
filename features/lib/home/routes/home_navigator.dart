@@ -1,6 +1,6 @@
 import 'package:common/common.dart';
 import 'package:features/home/routes/home_navigation_key.dart';
-import 'package:features/home/screen/home_screen.dart';
+import 'package:features/home/screen/Home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeNavigator extends TabBarNavigator {

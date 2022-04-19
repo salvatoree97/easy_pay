@@ -1,6 +1,6 @@
 import 'package:common/common.dart';
 import 'package:features/home/models/home_view_model.dart';
-import 'package:features/home/screen/home_widget.dart';
+import 'package:features/home/screen/home/home_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

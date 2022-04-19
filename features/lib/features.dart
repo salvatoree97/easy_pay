@@ -12,6 +12,7 @@ export 'package:features/login/registration_third_step_screen/registration_third
 
 ///[Home]
 export 'package:features/home/routes/home_element.dart';
+export 'package:features/home/screen/details/retail_detail_screen.dart';
 
 ///[Profile]
 export 'package:features/profile/routes/profile_element.dart';

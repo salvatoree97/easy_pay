@@ -46,6 +46,13 @@ class _HomeWidgetState extends State<HomeWidget> {
     }
   }
 
+  void _onTap(RetailModel retail) {
+    PackageConfiguration.navigationService.push(
+      AppRoutes.retailDetailScreen,
+      arguments: retail,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.viewModel.state.isLoading) {
@@ -72,20 +79,24 @@ class _HomeWidgetState extends State<HomeWidget> {
       return Expanded(
         child: ListView.builder(
           itemCount: widget.viewModel.filteredRetails.length,
-          itemBuilder: (ctx, index) => IconTitleDescriptionWidget(
-            margin: const EdgeInsets.only(
-              left: Dimension.defaultPadding,
-              right: Dimension.defaultPadding,
-              top: Dimension.defaultPadding,
-            ),
-            placeholderImage: '',
-            imageSize: 80,
-            title: widget.viewModel.filteredRetails[index].name,
-            description: widget.viewModel.filteredRetails[index].description,
-            badgeValue: widget
-                .viewModel.filteredRetails[index].discountPercentageString,
-            imageUrl: widget.viewModel.filteredRetails[index].imageUrl,
-          ),
+          itemBuilder: (ctx, index) {
+            final retail = widget.viewModel.filteredRetails[index];
+            return IconTitleDescriptionWidget(
+              margin: const EdgeInsets.only(
+                left: Dimension.defaultPadding,
+                right: Dimension.defaultPadding,
+                top: Dimension.defaultPadding,
+              ),
+              placeholderImage: '',
+              imageSize: 80,
+              title: retail.name,
+              description: retail.description,
+              badgeValue: retail.discountPercentageString,
+              imageUrl: retail.imageUrl,
+              heroTag: retail.id,
+              onTap: () => _onTap(retail),
+            );
+          },
         ),
       );
     }
@@ -94,25 +105,30 @@ class _HomeWidgetState extends State<HomeWidget> {
       child: AnimatedList(
         key: _listKey,
         initialItemCount: _items.length,
-        itemBuilder: (ctx, index, animation) => FadeTransition(
-          opacity: Tween<double>(
-            begin: 0,
-            end: 1,
-          ).animate(animation),
-          child: IconTitleDescriptionWidget(
-            margin: const EdgeInsets.only(
-              left: Dimension.defaultPadding,
-              right: Dimension.defaultPadding,
-              top: Dimension.defaultPadding,
+        itemBuilder: (ctx, index, animation) {
+          final retail = _items[index];
+          return FadeTransition(
+            opacity: Tween<double>(
+              begin: 0,
+              end: 1,
+            ).animate(animation),
+            child: IconTitleDescriptionWidget(
+              margin: const EdgeInsets.only(
+                left: Dimension.defaultPadding,
+                right: Dimension.defaultPadding,
+                top: Dimension.defaultPadding,
+              ),
+              placeholderImage: '',
+              imageSize: 80,
+              title: retail.name,
+              description: retail.description,
+              badgeValue: retail.discountPercentageString,
+              imageUrl: retail.imageUrl,
+              heroTag: retail.id,
+              onTap: () => _onTap(retail),
             ),
-            placeholderImage: '',
-            imageSize: 80,
-            title: _items[index].name,
-            description: _items[index].description,
-            badgeValue: _items[index].discountPercentageString,
-            imageUrl: _items[index].imageUrl,
-          ),
-        ),
+          );
+        },
       ),
     );
   }

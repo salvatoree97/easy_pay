@@ -9,7 +9,8 @@ class ContainerCachedImage extends StatelessWidget {
   final double? height;
   final Color? backgroundColor;
   final BoxFit? boxFit;
-  final bool? useBlur;
+  final BorderRadius borderRadius;
+  final String? heroTag;
 
   const ContainerCachedImage({
     Key? key,
@@ -19,7 +20,8 @@ class ContainerCachedImage extends StatelessWidget {
     this.height,
     this.backgroundColor,
     this.boxFit,
-    this.useBlur,
+    this.borderRadius = BorderRadius.zero,
+    this.heroTag,
   }) : super(key: key);
 
   Widget _getEmptyOrErrorWidget() {
@@ -34,33 +36,50 @@ class ContainerCachedImage extends StatelessWidget {
     );
   }
 
+  Widget _getBody() {
+    return ClipRRect(
+      borderRadius: borderRadius,
+      child: Container(
+        color: CustomColors.red,
+        child: Image(
+          image: CachedNetworkImageProvider(imageUrl!),
+          width: width ?? double.infinity,
+          height: height ?? 120,
+          fit: BoxFit.cover,
+          gaplessPlayback: true,
+          loadingBuilder: (BuildContext context, Widget child,
+              ImageChunkEvent? loadingProgress) {
+            if (loadingProgress == null) {
+              return child;
+            }
+            return Center(
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!
+                    : null,
+              ),
+            );
+          },
+          errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) =>
+              _getEmptyOrErrorWidget(),
+        ),
+      ),
+    );
+  }
+
+  Widget _getWidget() {
+    if (heroTag == null) {
+      return _getBody();
+    }
+    return Hero(tag: heroTag!, child: _getBody());
+  }
+
   @override
   Widget build(BuildContext context) {
     return imageUrl == null || imageUrl == ''
         ? _getEmptyOrErrorWidget()
-        : Image(
-            image: CachedNetworkImageProvider(imageUrl!),
-            width: width ?? double.infinity,
-            height: height ?? 120,
-            fit: BoxFit.cover,
-            gaplessPlayback: true,
-            loadingBuilder: (BuildContext context, Widget child,
-                ImageChunkEvent? loadingProgress) {
-              if (loadingProgress == null) {
-                return child;
-              }
-              return Center(
-                child: CircularProgressIndicator(
-                  value: loadingProgress.expectedTotalBytes != null
-                      ? loadingProgress.cumulativeBytesLoaded /
-                          loadingProgress.expectedTotalBytes!
-                      : null,
-                ),
-              );
-            },
-            errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) =>
-                _getEmptyOrErrorWidget(),
-          );
+        : _getWidget();
   }
 }
