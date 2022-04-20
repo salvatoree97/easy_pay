@@ -7,7 +7,8 @@
       "discountPercentage": 10,
       "name": "MetroStyle",
       "totalAmount": "0",
-      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      "address": "Via Castellanza 11, Milano"
     },
     {
       "id": "SmerPPBrj6GkclYvyKl1",
@@ -16,7 +17,8 @@
       "discountPercentage": 10,
       "name": "MetroStyle",
       "totalAmount": "0",
-      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      "address": "Via Castellanza 11, Milano"
     },
     {
       "id": "SmerPPBrj6GkclYvyKl2",
@@ -25,7 +27,8 @@
       "discountPercentage": 10,
       "name": "MetroStyle",
       "totalAmount": "0",
-      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      "address": "Via Castellanza 11, Milano"
     },
     {
       "id": "SmerPPBrj6GkclYvyKl3",
@@ -34,7 +37,8 @@
       "discountPercentage": 10,
       "name": "MetroStyle",
       "totalAmount": "0",
-      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      "address": "Via Castellanza 11, Milano"
     }
   ]
 }

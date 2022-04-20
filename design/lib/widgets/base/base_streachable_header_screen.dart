@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:design/theme/dimension/dimension.dart';
 import 'package:design/utils/size_helper.dart';
 import 'package:design/widgets/app_bar/stretchable_app_bar.dart';
@@ -66,6 +67,8 @@ class BaseStreachableHeaderScreenState
   late double _containerOpacity = 0.8;
   late double _opacity = 1.0;
   late String? _imageUrl;
+  late double _scale;
+  late double _radius;
 
   @override
   void initState() {
@@ -75,6 +78,8 @@ class BaseStreachableHeaderScreenState
     _containerOpacity = _maximumContainerOpacity;
     _opacity = _maximumOpacity;
     _imageUrl = widget.imageUrl;
+    _scale = 1.0;
+    _radius = 0.0;
   }
 
   void _scrollListner() {
@@ -102,67 +107,117 @@ class BaseStreachableHeaderScreenState
     }
   }
 
+  void _onHorizontalDragUpdate(DragUpdateDetails details) {
+    double? proposalScale;
+    final transitionOffset = details.delta.dx;
+
+    if (transitionOffset > 0) {
+      proposalScale = max(0.7, _scale - (transitionOffset / 100));
+      _radius = min(12, _radius + transitionOffset);
+    }
+
+    if (transitionOffset < 0) {
+      proposalScale = min(1, _scale - (transitionOffset / 100));
+      _radius = max(0, _radius + transitionOffset);
+    }
+
+    if (proposalScale == 0.7 && transitionOffset > 0) {
+      _scale = proposalScale!;
+      Navigator.of(context).pop();
+      return;
+    }
+
+    if (proposalScale != null) {
+      setState(() {
+        _scale = proposalScale!;
+        _radius = _radius;
+      });
+    }
+  }
+
+  void _onHorizontalDragEnd(DragEndDetails details) {
+    if (_scale != 0.7) {
+      setState(() => _scale = 1);
+    }
+  }
+
   SystemUiOverlayStyle get _systemOverlayStyle =>
       _isCollapsed ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light;
 
   @override
   Widget build(BuildContext context) {
-    return BaseScreen(
-      incudeTopSafeArea: false,
-      includeBottomSafeArea: false,
-      primaryColor: Theme.of(context).colorScheme.background,
-      body: CustomScrollView(
-        controller: _scrollController,
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
-        slivers: [
-          StretchableAppBar(
-            leading: widget.showBack
-                ? Padding(
-                    padding: const EdgeInsets.only(
-                      left: Dimension.defaultPadding,
-                      top: Dimension.pt5,
-                      bottom: Dimension.pt5,
-                    ),
-                    child: CustomRoundedIcon(
-                      onTap: () => Navigator.of(context).pop(),
-                      size: Dimension.toolbarItemSize,
-                    ),
-                  )
-                : Container(),
-            trailing: widget.showClose
-                ? Container(
-                    padding: const EdgeInsets.only(
-                      right: Dimension.defaultPadding,
-                      top: Dimension.pt5,
-                      bottom: Dimension.pt5,
-                    ),
-                    child: CustomRoundedIcon(
-                      onTap: () => Navigator.of(context).pop(),
-                      size: Dimension.toolbarItemSize,
-                      icon: Icons.close_rounded,
-                    ),
-                  )
-                : Container(),
-            expandedHeight: _expadedHeight,
-            systemOverlayStyle: _systemOverlayStyle,
-            titleOpacity: _isCollapsed ? 1.0 : 0.0,
-            title: widget.title,
-            imageLink: _imageUrl,
-            opacity: _opacity,
-            containerOpacity: _containerOpacity,
-            headerColor: widget.headerColor,
-            defaultImage: widget.defaultImage,
-            showBlurOnImage: widget.showBlurOnImage,
-            backgroundWidget: widget.backgroundWidget,
-            backgroundBottomPadding: widget.backgroundBottomPadding,
-            titleWidgetBorderRadius: widget.titleWidgetBorderRadius,
-            heroTag: widget.heroTag,
+    return GestureDetector(
+      onHorizontalDragUpdate: _onHorizontalDragUpdate,
+      onHorizontalDragEnd: _onHorizontalDragEnd,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+        child: Container(
+          decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2)),
+          child: AnimatedScale(
+            duration: const Duration(milliseconds: 30),
+            scale: _scale,
+            child: BaseScreen(
+              incudeTopSafeArea: false,
+              includeBottomSafeArea: false,
+              radius: _radius,
+              primaryColor: Theme.of(context).colorScheme.background,
+              body: CustomScrollView(
+                controller: _scrollController,
+                physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
+                slivers: [
+                  StretchableAppBar(
+                    leading: widget.showBack
+                        ? Padding(
+                            padding: const EdgeInsets.only(
+                              left: Dimension.defaultPadding,
+                              top: Dimension.pt5,
+                              bottom: Dimension.pt5,
+                            ),
+                            child: CustomRoundedIcon(
+                              onTap: () => Navigator.of(context).pop(),
+                              size: Dimension.toolbarItemSize,
+                            ),
+                          )
+                        : Container(),
+                    trailing: widget.showClose
+                        ? Container(
+                            padding: const EdgeInsets.only(
+                              right: Dimension.defaultPadding,
+                              top: Dimension.pt5,
+                              bottom: Dimension.pt5,
+                            ),
+                            child: CustomRoundedIcon(
+                              onTap: () => Navigator.of(context).pop(),
+                              size: Dimension.toolbarItemSize,
+                              icon: Icons.close_rounded,
+                            ),
+                          )
+                        : Container(),
+                    expandedHeight: _expadedHeight,
+                    systemOverlayStyle: _systemOverlayStyle,
+                    titleOpacity: _isCollapsed ? 1.0 : 0.0,
+                    title: widget.title,
+                    imageLink: _imageUrl,
+                    opacity: _opacity,
+                    containerOpacity: _containerOpacity,
+                    headerColor: widget.headerColor,
+                    defaultImage: widget.defaultImage,
+                    showBlurOnImage: widget.showBlurOnImage,
+                    backgroundWidget: widget.backgroundWidget,
+                    backgroundBottomPadding: widget.backgroundBottomPadding,
+                    titleWidgetBorderRadius: widget.titleWidgetBorderRadius,
+                    heroTag: widget.heroTag,
+                    radius: _radius,
+                  ),
+                  widget.bodyWidget,
+                ],
+              ),
+              floatingWidget: widget.floatingWidget,
+            ),
           ),
-          widget.bodyWidget,
-        ],
+        ),
       ),
-      floatingWidget: widget.floatingWidget,
     );
   }
 }

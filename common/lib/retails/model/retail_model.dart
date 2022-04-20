@@ -8,6 +8,7 @@ class RetailModel {
   final int discountPercentage;
   final String? description;
   final String? imageUrl;
+  final String? address;
 
   RetailModel({
     required this.id,
@@ -17,6 +18,7 @@ class RetailModel {
     required this.discountPercentage,
     this.description,
     this.imageUrl,
+    this.address,
   });
 
   factory RetailModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +30,7 @@ class RetailModel {
       discountPercentage: json.getRequiredKey('discountPercentage'),
       description: json.getNullableKey('description'),
       imageUrl: json.getNullableKey('imageUrl'),
+      address: json.getNullableKey('address'),
     );
   }
 

@@ -76,7 +76,7 @@ class RouterService {
         );
       case AppRoutes.retailDetailScreen:
         final retailModel = settings.arguments as RetailModel;
-        return MaterialPageRoute(
+        return FadePageRoute(
           builder: (_) => RetailDetailScreen(retailModel: retailModel),
         );
     }

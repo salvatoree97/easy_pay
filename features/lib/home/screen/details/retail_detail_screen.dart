@@ -15,7 +15,21 @@ class RetailDetailScreen extends StatelessWidget {
       bodyWidget: SliverList(
         delegate: SliverChildListDelegate.fixed(
           [
-            Text(retailModel.name),
+            const SizedBox(height: Dimension.pt10),
+            TitleDescriptionWidget(
+              title: 'Attività commerciale',
+              description: retailModel.name,
+            ),
+            const SizedBox(height: Dimension.pt30),
+            TitleDescriptionWidget(
+              title: 'Descrizione',
+              description: retailModel.description,
+            ),
+            const SizedBox(height: Dimension.pt30),
+            TitleDescriptionWidget(
+              title: 'Indirizzo',
+              description: retailModel.address ?? "-",
+            ),
           ],
         ),
       ),
@@ -25,6 +39,32 @@ class RetailDetailScreen extends StatelessWidget {
       showBlurOnImage: false,
       showBack: true,
       showClose: false,
+      floatingWidget: SizedBox(
+        width: SizeHelper.screenWidth,
+        height: 70,
+        child: Padding(
+          padding:
+              const EdgeInsets.symmetric(horizontal: Dimension.defaultPadding),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TitleDescriptionWidget(
+                title: 'Sconto',
+                description: retailModel.discountPercentageString,
+                spacing: 0,
+                titleTextStyle: Theme.of(context).textTheme.bodySmall,
+                descriptionTextStyle: Theme.of(context).textTheme.titleLarge,
+              ),
+              CustomElevatedButton(
+                padding: EdgeInsets.zero,
+                title: 'Paga',
+                onPressed: () {},
+                width: SizeHelper.wp(50),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

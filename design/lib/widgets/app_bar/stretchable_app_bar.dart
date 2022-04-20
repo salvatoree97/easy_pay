@@ -31,6 +31,7 @@ class StretchableAppBar extends StatelessWidget {
   final bool useCustomTitleWidget;
   final bool showBlurOnImage;
   final BorderRadiusGeometry titleWidgetBorderRadius;
+  final double radius;
 
   const StretchableAppBar({
     Key? key,
@@ -56,6 +57,7 @@ class StretchableAppBar extends StatelessWidget {
       topLeft: Radius.circular(10.0),
       topRight: Radius.circular(10.0),
     ),
+    this.radius = 0.0,
   }) : super(key: key);
 
   @override
@@ -73,6 +75,7 @@ class StretchableAppBar extends StatelessWidget {
         opacity: titleOpacity,
         child: Text(title),
       ),
+      backgroundColor: CustomColors.clear,
       flexibleSpace: CustomSpaceBar(
         backgroundBottomPadding: backgroundBottomPadding,
         collapseMode: CollapseMode.pin,
@@ -87,9 +90,11 @@ class StretchableAppBar extends StatelessWidget {
               defaultImage: defaultImage,
               imageUrl: imageLink,
               heroTag: heroTag,
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(Dimension.pt10),
-                bottomRight: Radius.circular(Dimension.pt10),
+              borderRadius: BorderRadius.only(
+                bottomLeft: const Radius.circular(Dimension.pt10),
+                bottomRight: const Radius.circular(Dimension.pt10),
+                topLeft: Radius.circular(radius),
+                topRight: Radius.circular(radius),
               ),
             ),
             showBlurOnImage

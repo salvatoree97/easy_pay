@@ -16,6 +16,7 @@ class BaseScreen extends StatelessWidget {
   final SystemUiOverlayStyle statusBarStyle;
   final bool useTransparentBackground;
   final Widget? floatingWidget;
+  final double radius;
 
   const BaseScreen({
     Key? key,
@@ -31,6 +32,7 @@ class BaseScreen extends StatelessWidget {
     this.statusBarStyle = SystemUiOverlayStyle.light,
     this.useTransparentBackground = false,
     this.floatingWidget,
+    this.radius = 0.0,
   }) : super(key: key);
 
   BoxDecoration _decoration(BuildContext context) {
@@ -48,19 +50,22 @@ class BaseScreen extends StatelessWidget {
     }
 
     if (useTransparentBackground) {
-      return const BoxDecoration(
+      return BoxDecoration(
         color: CustomColors.clear,
+        borderRadius: BorderRadius.circular(radius),
       );
     }
 
     if (primaryColor != Colors.transparent) {
       return BoxDecoration(
         color: primaryColor,
+        borderRadius: BorderRadius.circular(radius),
       );
     }
 
     return BoxDecoration(
       color: Theme.of(context).colorScheme.background,
+      borderRadius: BorderRadius.circular(radius),
     );
   }
 
