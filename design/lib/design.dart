@@ -38,6 +38,7 @@ export 'package:design/widgets/widgets/container_cached_image.dart';
 export 'package:design/widgets/widgets/icon_title_description_widget.dart';
 export 'package:design/widgets/widgets/title_description_widget.dart';
 export 'package:design/widgets/widgets/title_description_button_widget.dart';
+export 'package:design/widgets/widgets/title_description_control_widget.dart';
 
 ///[Skeleton]
 export 'package:design/widgets/skeleton/icon_title_description_skeleton_widget.dart';

@@ -95,7 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 horizontal: Dimension.defaultPadding),
             child: Text(
               'Inserisci le tue credenziali',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
           ),
           const SizedBox(height: 20),

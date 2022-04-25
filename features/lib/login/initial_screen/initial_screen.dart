@@ -34,12 +34,18 @@ class InitialScreen extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               'Scopri la nostra app',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
             const SizedBox(height: 10),
             Text(
               'Sottotili',
-              style: Theme.of(context).textTheme.labelSmall,
+              style: Theme.of(context)
+                  .textTheme
+                  .labelSmall
+                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
             const SizedBox(height: 30),
             Expanded(child: Container()),

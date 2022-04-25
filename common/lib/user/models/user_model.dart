@@ -24,4 +24,6 @@ class UserModel {
       lastname: json.getRequiredKey('lastname'),
     );
   }
+
+  String get nameDescription => '$name $lastname';
 }

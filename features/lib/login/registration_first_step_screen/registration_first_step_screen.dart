@@ -85,7 +85,10 @@ class _RegistrationFirstStepScreenState
                 horizontal: Dimension.defaultPadding),
             child: Text(
               'Inserisci i tuoi dati personali',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
           ),
           const SizedBox(height: 20),

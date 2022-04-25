@@ -47,7 +47,10 @@ class ResultBaseScreen extends StatelessWidget {
                 horizontal: Dimension.defaultPadding),
             child: Text(
               description,
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
               textAlign: TextAlign.center,
             ),
           ),

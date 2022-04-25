@@ -57,6 +57,7 @@ UserState _userFetchSucceded(
 ) {
   return userState.copyWith(
     firebaseUser: action.firebaseUser,
+    user: action.user,
     error: false,
     isLoading: false,
   );

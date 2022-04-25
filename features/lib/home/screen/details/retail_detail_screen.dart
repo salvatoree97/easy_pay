@@ -53,8 +53,13 @@ class RetailDetailScreen extends StatelessWidget {
                 title: 'Sconto',
                 description: retailModel.discountPercentageString,
                 spacing: 0,
-                titleTextStyle: Theme.of(context).textTheme.bodySmall,
-                descriptionTextStyle: Theme.of(context).textTheme.titleLarge,
+                titleTextStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground),
+                descriptionTextStyle: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground),
               ),
               CustomElevatedButton(
                 padding: EdgeInsets.zero,

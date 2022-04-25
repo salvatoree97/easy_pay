@@ -16,3 +16,7 @@ export 'package:features/home/screen/details/retail_detail_screen.dart';
 
 ///[Profile]
 export 'package:features/profile/routes/profile_element.dart';
+export 'package:features/profile/screen/notifications/notifications_screen.dart';
+export 'package:features/profile/screen/settings/settings_screen.dart';
+export 'package:features/profile/screen/personal_data/personal_data_screen.dart';
+export 'package:features/profile/screen/theme/theme_screen.dart';

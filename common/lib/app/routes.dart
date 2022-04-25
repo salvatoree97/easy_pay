@@ -12,4 +12,8 @@ class AppRoutes {
   static const profileScreen = "/PROFILE_SCREEN";
 
   static const retailDetailScreen = "/RETAIL_DETAIL";
+  static const personalDataScreen = "/PERSONAL_DATA_SCREEN";
+  static const notificationsScreen = "/NOTIFICATIONS_SCREEN";
+  static const themeScreen = "/THEME_SCREEN";
+  static const settingsScreen = "/SETTINGS_SCREEN";
 }

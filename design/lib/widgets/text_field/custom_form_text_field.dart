@@ -176,7 +176,8 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
                     child: Text(
                       widget.title!,
                       textAlign: TextAlign.left,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground),
                     ),
                   ),
                 )

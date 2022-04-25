@@ -28,7 +28,9 @@ class TitleDescriptionWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: titleTextStyle ?? Theme.of(context).textTheme.bodySmall,
+            style: titleTextStyle ??
+                Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground),
           ),
           description != null
               ? Padding(
@@ -36,7 +38,8 @@ class TitleDescriptionWidget extends StatelessWidget {
                   child: Text(
                     description!,
                     style: descriptionTextStyle ??
-                        Theme.of(context).textTheme.titleSmall,
+                        Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground),
                   ),
                 )
               : Container()

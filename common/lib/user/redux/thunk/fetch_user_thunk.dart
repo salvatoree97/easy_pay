@@ -57,6 +57,7 @@ ThunkAction<AppState> fetchUserThunk({
     try {
       Logger.instance.info('Send UserApi.getUser for user: $user');
       final userModel = await UserApi.getUser(email: user.email!);
+      store.dispatch(UserFetchSucceded(firebaseUser: user, user: userModel));
       onSuccessHandler(user, userModel);
     } catch (error) {
       Logger.instance.error('Send UserApi.getUser failed with error: $error');

@@ -116,7 +116,10 @@ class _RegistrationSecondStepScreenState
                 horizontal: Dimension.defaultPadding),
             child: Text(
               'Ciao ${widget.name}, ci siamo quasi!',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
           ),
           const SizedBox(height: 20),
@@ -125,7 +128,10 @@ class _RegistrationSecondStepScreenState
                 horizontal: Dimension.defaultPadding),
             child: Text(
               'Crea le tue credenziali!',
-              style: Theme.of(context).textTheme.labelSmall,
+              style: Theme.of(context)
+                  .textTheme
+                  .labelSmall
+                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
           ),
           const SizedBox(height: 20),

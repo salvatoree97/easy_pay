@@ -79,6 +79,22 @@ class RouterService {
         return FadePageRoute(
           builder: (_) => RetailDetailScreen(retailModel: retailModel),
         );
+      case AppRoutes.personalDataScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PersonalDataScreen(),
+        );
+      case AppRoutes.themeScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ThemeScreen(),
+        );
+      case AppRoutes.notificationsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const NotificationsScreen(),
+        );
+      case AppRoutes.settingsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SettingsScreen(),
+        );
     }
     return MaterialPageRoute(
       builder: (_) => const SplashScreen(),

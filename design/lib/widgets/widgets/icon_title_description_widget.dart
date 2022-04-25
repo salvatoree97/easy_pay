@@ -100,10 +100,14 @@ class IconTitleDescriptionWidget extends StatelessWidget {
                   ),
                 ),
                 showArrow
-                    ? const Padding(
-                        padding:
-                            EdgeInsets.only(right: Dimension.defaultPadding),
-                        child: Icon(Icons.arrow_forward_ios, size: 15),
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                            right: Dimension.defaultPadding),
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 15,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                       )
                     : Container(),
               ],

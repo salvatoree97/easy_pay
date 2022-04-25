@@ -1,6 +1,6 @@
 import 'package:common/common.dart';
 import 'package:features/profile/routes/profile_navigation_key.dart';
-import 'package:features/profile/screen/profile_screen.dart';
+import 'package:features/profile/screen/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileNavigator extends TabBarNavigator {

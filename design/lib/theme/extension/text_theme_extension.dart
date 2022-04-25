@@ -67,45 +67,61 @@ extension TextThemeExtension on Themes {
 
   static final TextTheme darkTextTheme =
       Typography.material2018().black.copyWith(
-            headline1: const PoppinstTextStyle(
-              newColor: CustomColors.black,
+            titleLarge: const PoppinstTextStyle(
+              newColor: CustomColors.white,
+              fontDimension: Dimension.pt24,
+            ),
+            titleMedium: const PoppinstTextStyle(
+              newColor: CustomColors.white,
+              fontDimension: Dimension.pt20,
+            ),
+            titleSmall: const PoppinstTextStyle(
+              newColor: CustomColors.white,
+              fontDimension: Dimension.pt16,
+            ),
+            displayLarge: const PoppinstTextStyle(
+              newColor: CustomColors.white,
               fontDimension: 94,
             ),
-            headline2: const PoppinstTextStyle(
-              newColor: CustomColors.black,
+            displayMedium: const PoppinstTextStyle(
+              newColor: CustomColors.white,
               fontDimension: 60,
             ),
-            headline3: const PoppinstTextStyle(
-              newColor: CustomColors.black,
-              fontDimension: 48,
-            ),
-            headline4: const PoppinstTextStyle(
-              newColor: CustomColors.black,
-              fontDimension: 32,
-            ),
-            headline5: const PoppinstTextStyle(
-              newColor: CustomColors.black,
+            displaySmall: const PoppinstTextStyle(
+              newColor: CustomColors.white,
               fontDimension: 24,
             ),
-            headline6: const PoppinstTextStyle(
-              newColor: CustomColors.black,
+            headlineLarge: const PoppinstTextStyle(
+              newColor: CustomColors.white,
+              fontDimension: 48,
+            ),
+            headlineMedium: const PoppinstTextStyle(
+              newColor: CustomColors.white,
+              fontDimension: 36,
+            ),
+            headlineSmall: const PoppinstTextStyle(
+              newColor: CustomColors.white,
               fontDimension: 20,
             ),
-            subtitle1: const PoppinstTextStyle(
-              newColor: CustomColors.black,
-              fontDimension: 16,
+            bodyLarge: const PoppinstTextStyle(
+              newColor: CustomColors.white,
+              fontDimension: 22,
             ),
-            subtitle2: const PoppinstTextStyle(
-              newColor: CustomColors.black,
-              fontDimension: 14,
-            ),
-            bodyText1: const PoppinstTextStyle(
-              newColor: CustomColors.black,
+            bodyMedium: const PoppinstTextStyle(
+              newColor: CustomColors.white,
               fontDimension: 17,
             ),
-            bodyText2: const PoppinstTextStyle(
-              newColor: CustomColors.black,
+            bodySmall: const PoppinstTextStyle(
+              newColor: CustomColors.white,
               fontDimension: 14,
+            ),
+            labelLarge: const PoppinstTextStyle(
+              newColor: CustomColors.grey,
+              fontDimension: 22,
+            ),
+            labelSmall: const PoppinstTextStyle(
+              newColor: CustomColors.grey,
+              fontDimension: 16,
             ),
           );
 }

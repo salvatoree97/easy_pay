@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:common/common.dart';
-import 'package:features/features.dart';
 import 'package:features/profile/screen/widget/profile_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -31,7 +31,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  void _onLogoutTapped() {}
+  void _onLogoutTapped() {
+    FirebaseAuthService.instance.signOut();
+    SchedulerBinding.instance?.addPostFrameCallback((_) {
+      PackageConfiguration.navigationService.pushAndRemoveUntil(
+        AppRoutes.initialScreen,
+        (_) => false,
+      );
+    });
+  }
+
+  void _onPersonalDataTapped() {
+    PackageConfiguration.navigationService.push(AppRoutes.personalDataScreen);
+  }
+
+  void _onThemeTapped() {
+    PackageConfiguration.navigationService.push(AppRoutes.themeScreen);
+  }
+
+  void _onNotificationsTapped() {
+    PackageConfiguration.navigationService.push(AppRoutes.notificationsScreen);
+  }
+
+  void _onSettingsTapped() {
+    PackageConfiguration.navigationService.push(AppRoutes.settingsScreen);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
                   imageColor: Theme.of(context).colorScheme.onSecondary,
                   showArrow: true,
+                  onTap: _onPersonalDataTapped,
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 IconTitleDescriptionWidget(
@@ -67,6 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
                   imageColor: Theme.of(context).colorScheme.onSecondary,
                   showArrow: true,
+                  onTap: _onThemeTapped,
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 IconTitleDescriptionWidget(
@@ -76,6 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
                   imageColor: Theme.of(context).colorScheme.onSecondary,
                   showArrow: true,
+                  onTap: _onNotificationsTapped,
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 IconTitleDescriptionWidget(
@@ -85,6 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
                   imageColor: Theme.of(context).colorScheme.onSecondary,
                   showArrow: true,
+                  onTap: _onSettingsTapped,
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 TitleDescriptionButtonWidget(

@@ -29,4 +29,8 @@ class FirebaseAuthService {
       password: password,
     );
   }
+
+  Future<void> signOut() {
+    return firebase_auth.FirebaseAuth.instance.signOut();
+  }
 }
