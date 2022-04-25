@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 
 class IconTitleDescriptionWidget extends StatelessWidget {
   final String title;
-  final String placeholderImage;
+  final IconData placeholderImage;
   final String? description;
   final String? imageUrl;
   final String? badgeValue;
-  final EdgeInsets margin;
-  final double imageSize;
   final String? heroTag;
   final Function()? onTap;
+  final Color? imageColor;
+  final double imageSize;
+  final EdgeInsets margin;
+  final EdgeInsets imagePadding;
+  final bool showArrow;
 
   const IconTitleDescriptionWidget({
     Key? key,
@@ -21,11 +24,19 @@ class IconTitleDescriptionWidget extends StatelessWidget {
     this.description,
     this.imageUrl,
     this.badgeValue,
-    this.margin =
-        const EdgeInsets.symmetric(horizontal: Dimension.defaultPadding),
-    this.imageSize = 80,
     this.heroTag,
     this.onTap,
+    this.imageColor,
+    this.imageSize = 80,
+    this.margin =
+        const EdgeInsets.symmetric(horizontal: Dimension.defaultPadding),
+    this.imagePadding = const EdgeInsets.only(
+      left: Dimension.pt5,
+      top: Dimension.pt5,
+      bottom: Dimension.pt5,
+      right: Dimension.defaultPadding,
+    ),
+    this.showArrow = false,
   }) : super(key: key);
 
   @override
@@ -43,12 +54,7 @@ class IconTitleDescriptionWidget extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: Dimension.pt5,
-                    top: Dimension.pt5,
-                    bottom: Dimension.pt5,
-                    right: Dimension.defaultPadding,
-                  ),
+                  padding: imagePadding,
                   child: ContainerCachedImage(
                     defaultImage: placeholderImage,
                     imageUrl: imageUrl,
@@ -56,6 +62,7 @@ class IconTitleDescriptionWidget extends StatelessWidget {
                     width: imageSize,
                     borderRadius: BorderRadius.circular(Dimension.pt10),
                     heroTag: heroTag,
+                    imageColor: imageColor,
                   ),
                 ),
                 Flexible(
@@ -92,6 +99,13 @@ class IconTitleDescriptionWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                showArrow
+                    ? const Padding(
+                        padding:
+                            EdgeInsets.only(right: Dimension.defaultPadding),
+                        child: Icon(Icons.arrow_forward_ios, size: 15),
+                      )
+                    : Container(),
               ],
             ),
             badgeValue != null

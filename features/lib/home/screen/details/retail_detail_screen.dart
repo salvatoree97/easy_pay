@@ -33,15 +33,16 @@ class RetailDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-      defaultImage: '',
+      defaultImage: Icons.shop_2_rounded,
       imageUrl: retailModel.imageUrl,
       heroTag: retailModel.id,
       showBlurOnImage: false,
       showBack: true,
       showClose: false,
-      floatingWidget: SizedBox(
+      floatingWidget: Container(
         width: SizeHelper.screenWidth,
         height: 70,
+        color: Theme.of(context).colorScheme.background,
         child: Padding(
           padding:
               const EdgeInsets.symmetric(horizontal: Dimension.defaultPadding),

@@ -15,7 +15,7 @@ class StretchableAppBar extends StatelessWidget {
   final String title;
   final double containerOpacity;
   final double opacity;
-  final String defaultImage;
+  final IconData defaultImage;
 
   final String? heroTag;
   final Widget? leading;

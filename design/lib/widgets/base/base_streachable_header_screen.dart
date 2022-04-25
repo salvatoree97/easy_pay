@@ -11,7 +11,7 @@ import 'package:flutter/services.dart';
 class BaseStreachableHeaderScreen extends StatefulWidget {
   final String title;
   final Widget bodyWidget;
-  final String defaultImage;
+  final IconData defaultImage;
 
   final String? heroTag;
   final Widget? floatingWidget;

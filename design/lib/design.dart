@@ -21,6 +21,7 @@ export 'package:design/routes/modal_fade_page_route.dart';
 ///[Widgets]
 export 'package:design/widgets/button/buttons_stack_widget.dart';
 export 'package:design/widgets/button/custom_elevated_button.dart';
+export 'package:design/widgets/button/text_button_widget.dart';
 export 'package:design/widgets/loader/circle_indicator.dart';
 export 'package:design/widgets/base/custom_form_widget.dart';
 export 'package:design/widgets/base/base_screen.dart';
@@ -36,6 +37,7 @@ export 'package:design/widgets/text_field/password_suffix_widget.dart';
 export 'package:design/widgets/widgets/container_cached_image.dart';
 export 'package:design/widgets/widgets/icon_title_description_widget.dart';
 export 'package:design/widgets/widgets/title_description_widget.dart';
+export 'package:design/widgets/widgets/title_description_button_widget.dart';
 
 ///[Skeleton]
 export 'package:design/widgets/skeleton/icon_title_description_skeleton_widget.dart';
