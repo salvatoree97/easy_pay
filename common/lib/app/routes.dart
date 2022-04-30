@@ -16,4 +16,7 @@ class AppRoutes {
   static const notificationsScreen = "/NOTIFICATIONS_SCREEN";
   static const themeScreen = "/THEME_SCREEN";
   static const settingsScreen = "/SETTINGS_SCREEN";
+
+  static const optionSheet = "/OPTION_SHEET";
+  static const biometricsPasswordScreen = "/BIOMETRY_PASSWORD_SCREEN";
 }

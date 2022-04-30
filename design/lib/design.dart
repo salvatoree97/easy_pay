@@ -17,6 +17,7 @@ export 'package:design/utils/size_helper.dart';
 export 'package:design/routes/scale_page_route.dart';
 export 'package:design/routes/fade_page_route.dart';
 export 'package:design/routes/modal_fade_page_route.dart';
+export 'package:design/routes/clear_page_route.dart';
 
 ///[Widgets]
 export 'package:design/widgets/button/buttons_stack_widget.dart';
@@ -25,6 +26,9 @@ export 'package:design/widgets/button/text_button_widget.dart';
 export 'package:design/widgets/loader/circle_indicator.dart';
 export 'package:design/widgets/base/custom_form_widget.dart';
 export 'package:design/widgets/base/base_screen.dart';
+export 'package:design/widgets/base/base_bottom_sheet_screen.dart';
+export 'package:design/widgets/base/option_bottom_sheet_screen.dart';
+export 'package:design/widgets/bottom_sheet/bottom_sheettable_widget.dart';
 export 'package:design/widgets/base/base_streachable_header_screen.dart';
 export 'package:design/widgets/text_field/custom_form_text_field.dart';
 export 'package:design/widgets/app_bar/default_app_bar.dart';

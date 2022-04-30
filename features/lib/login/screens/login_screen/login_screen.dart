@@ -1,3 +1,4 @@
+import 'package:features/login/redux/biometrics_thunk.dart';
 import 'package:flutter/material.dart';
 import 'package:common/common.dart';
 
@@ -26,12 +27,14 @@ class _LoginScreenState extends State<LoginScreen> {
     _autovalidateMode = AutovalidateMode.disabled;
 
     _emailFocusNode = FocusNode();
-    _passwordFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode()..addListener(_onPasswordFocusNodeListner);
 
     _emailController = TextEditingController()
       ..addListener(_textControllerListner);
     _passwordController = TextEditingController()
       ..addListener(_textControllerListner);
+
+    _setInitialUsername();
   }
 
   @override
@@ -41,6 +44,32 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _textControllerListner() {
     setState(() {});
+  }
+
+  _setInitialUsername() {
+    UserManager.instance.fetchUsername().then((username) {
+      if (username != null && username.isNotEmpty) {
+        _emailController.text = username;
+      }
+    });
+  }
+
+  void _onPasswordFocusNodeListner() {
+    if (_passwordController.text.isNotEmpty || !_passwordFocusNode.hasFocus) {
+      return;
+    }
+    StoreProvider.of<AppState>(context).dispatch(
+      biometricsThunk(
+        username: _emailController.text,
+        onReceivePasswordFromBiometrics: _onReceivePasswordFromBiometrics,
+      ),
+    );
+  }
+
+  _onReceivePasswordFromBiometrics(String password) {
+    _passwordController.text = password;
+    _setObscurePassword(true);
+    _onButtonPressed();
   }
 
   bool get _isButtonEnabled {

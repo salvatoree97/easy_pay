@@ -6,11 +6,15 @@ export 'package:redux/redux.dart';
 export 'package:flutter_redux/flutter_redux.dart';
 export 'package:redux_thunk/redux_thunk.dart';
 export 'package:bffe/bffe.dart';
+export 'package:local_auth/local_auth.dart';
 
 ///[]
 export 'package:common/interceptors/oauth_interceptor.dart';
-export 'package:common/services/route_resolver_service_interface.dart';
 export 'package:common/models/notification_model.dart';
+
+///[Services]
+export 'package:common/services/route_resolver_service_interface.dart';
+export 'package:common/services/biometrics_service.dart';
 
 ///[Firebase]
 export 'package:common/firebase/firebase_service.dart';
@@ -30,6 +34,7 @@ export 'package:common/user/redux/thunk/reload_user_thunk.dart';
 export 'package:common/user/redux/thunk/email_verification_thunk.dart';
 export 'package:common/user/redux/thunk/fetch_user_thunk.dart';
 export 'package:common/user/redux/thunk/login_thunk.dart';
+export 'package:common/user/user_manager.dart';
 
 ///[Retails]
 export 'package:common/retails/redux/reducer/retails_reducer.dart';

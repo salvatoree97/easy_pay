@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:common/app/package_configuration.dart';
+import 'package:common/app/routes.dart';
 import 'package:common/firebase/firebase_auth_service.dart';
 import 'package:core/core.dart';
 
@@ -41,21 +43,21 @@ class OAuthInterceptor extends BaseInterceptor {
         if (error.response?.statusCode == HttpStatus.unauthorized ||
             error.response?.statusCode == HttpStatus.forbidden) {
           Logger.instance.error('Refresh della sessione fallito');
-          // NavigationService.instance.navigateToAndRemoveUntil(
-          //     AppRoutes.LOGIN_SCREEN, (_) => false,
-          //     arguments: {
-          //       'isFromTabBar': true,
-          //     });
+          PackageConfiguration.navigationService.pushAndRemoveUntil(
+            AppRoutes.initialScreen,
+            (_) => false,
+            arguments: true,
+          );
           handler.reject(error);
         }
         super.onError(error, handler);
       });
     } catch (error) {
-      // NavigationService.instance.navigateToAndRemoveUntil(
-      //     AppRoutes.LOGIN_SCREEN, (_) => false,
-      //     arguments: {
-      //       'isFromTabBar': true,
-      //     });
+      PackageConfiguration.navigationService.pushAndRemoveUntil(
+        AppRoutes.initialScreen,
+        (_) => false,
+        arguments: true,
+      );
       handler.reject(err);
     }
 

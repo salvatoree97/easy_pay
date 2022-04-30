@@ -9,8 +9,11 @@ class RouterService {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.initialScreen:
+        final bool goToLogin = settings.arguments as bool? ?? false;
         return MaterialPageRoute(
-          builder: (_) => const InitialScreen(),
+          builder: (_) => InitialScreen(
+            goToLogin: goToLogin,
+          ),
         );
 
       case AppRoutes.loginScreen:
@@ -61,19 +64,7 @@ class RouterService {
             child: const TabScreen(),
           ),
         );
-      case AppRoutes.profileScreen:
-        return ScalePageRoute(
-          type: ScaleType.fromSmallerToGreater,
-          builder: (ctx) => ChangeNotifierProvider(
-            create: (_) => TabBarProvider(
-              tabs: [
-                HomeElement(),
-                ProfileElement(),
-              ],
-            ),
-            child: const TabScreen(),
-          ),
-        );
+
       case AppRoutes.retailDetailScreen:
         final retailModel = settings.arguments as RetailModel;
         return FadePageRoute(
@@ -94,6 +85,15 @@ class RouterService {
       case AppRoutes.settingsScreen:
         return MaterialPageRoute(
           builder: (_) => const SettingsScreen(),
+        );
+      case AppRoutes.optionSheet:
+        final params = settings.arguments as OptionBottomSheetParams;
+        return ClearPageRoute(
+          builder: (_) => OptionBottomSheetScreen(params: params),
+        );
+      case AppRoutes.biometricsPasswordScreen:
+        return ClearPageRoute(
+          builder: (_) => const BiometricsPasswordScreen(),
         );
     }
     return MaterialPageRoute(

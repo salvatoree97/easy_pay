@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       PackageConfiguration.navigationService.pushAndRemoveUntil(
         AppRoutes.initialScreen,
         (_) => false,
+        arguments: true,
       );
     });
   }

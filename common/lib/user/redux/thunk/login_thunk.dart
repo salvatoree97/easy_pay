@@ -1,9 +1,13 @@
-import 'package:bffe/bffe.dart';
 import 'package:common/app/app_state.dart';
+import 'package:common/app/package_configuration.dart';
+import 'package:common/app/routes.dart';
 import 'package:common/firebase/firebase_auth_service.dart';
+import 'package:common/services/biometrics_service.dart';
 import 'package:common/user/redux/action/user_actions.dart';
-import 'package:common/user/redux/service/get_user_dto.dart';
+import 'package:common/user/redux/api/user_api.dart';
+import 'package:common/user/user_manager.dart';
 import 'package:core/core.dart';
+import 'package:design/widgets/base/option_bottom_sheet_screen.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
@@ -15,14 +19,6 @@ ThunkAction<AppState> loginThunk({
   required Function onError,
 }) =>
     (Store<AppState> store) async {
-      // final bool canAskBiometrics =
-      //     await BiometricsService.instance.canAskBiometrics;
-      // final bool isLoginWithBiometricsActive =
-      //     await BiometricsService.instance.isLoginWithBiometricsActive();
-
-      // if (canAskBiometrics && !isLoginWithBiometricsActive) {
-      //   await _handleBiometricsFlow(password);
-      // }
       store.dispatch(UserLoginRequested());
       try {
         await FirebaseAuthService.instance.loginWith(
@@ -44,15 +40,28 @@ ThunkAction<AppState> loginThunk({
           await currentUser.getIdTokenResult(true);
           Logger.instance.info('Firebase user: $currentUser');
 
-          //UserManager.instance.saveUsername(username);
+          UserManager.instance.saveUsername(username);
 
-          // final bool hasChangedPassword = await BiometricsService.instance
-          //     .hasToSaveDifferentPassword(password);
-          // if (hasChangedPassword) await _handleBiometricsFlow(password);
+          final bool canAskBiometrics = await BiometricsService
+              .instance.canAskBiometrics
+              .catchError((_) => false);
+          final bool isLoginWithBiometricsActive = await BiometricsService
+              .instance
+              .isLoginWithBiometricsActive()
+              .catchError((_) => false);
+
+          final bool hasChangedPassword = await BiometricsService.instance
+              .hasToSaveDifferentPassword(password)
+              .catchError((_) => false);
+
+          if (canAskBiometrics &&
+              (!isLoginWithBiometricsActive || hasChangedPassword)) {
+            await _handleBiometricsFlow(password)
+                .catchError((error) => Logger.instance.error(error));
+          }
 
           if (currentUser.emailVerified) {
-            final dto = GetUserDTO(email: currentUser.email ?? '');
-            final userModel = await BffeDataService.getUser(dto);
+            final userModel = await UserApi.getUser(email: currentUser.email!);
 
             store.dispatch(
               UserFetchSucceded(
@@ -76,17 +85,17 @@ ThunkAction<AppState> loginThunk({
       }
     };
 
-// Future _handleBiometricsFlow(String password) async {
-//   final bool? canConfigureFaceId =
-//       await NavigationService.instance.showFloatingBottomSheet<bool>(
-//     onDismiss: () => NavigationService.instance.goBack(value: false),
-//     childWidget: BiometricsFloatingWidget(
-//       onConfirmPressed: () => NavigationService.instance.goBack(value: true),
-//       onDeclinePressed: () => NavigationService.instance.goBack(value: false),
-//     ),
-//   );
+Future _handleBiometricsFlow(String password) async {
+  final bool? canConfigureFaceId =
+      await PackageConfiguration.navigationService.push(
+    AppRoutes.optionSheet,
+    arguments: OptionBottomSheetParams(
+        description: 'Vuoi abilitare la biometria',
+        confirmButtonTitle: 'Conferma',
+        cancelButtonTitle: 'Annulla'),
+  );
 
-//   if (canConfigureFaceId ?? false) {
-//     await BiometricsService.instance.savePasswordUsingBiometrics(password);
-//   }
-// }
+  if (canConfigureFaceId ?? false) {
+    await BiometricsService.instance.savePasswordUsingBiometrics(password);
+  }
+}

@@ -1,8 +1,28 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
-class InitialScreen extends StatelessWidget {
-  const InitialScreen({Key? key}) : super(key: key);
+class InitialScreen extends StatefulWidget {
+  final bool goToLogin;
+  const InitialScreen({
+    Key? key,
+    this.goToLogin = false,
+  }) : super(key: key);
+
+  @override
+  State<InitialScreen> createState() => _InitialScreenState();
+}
+
+class _InitialScreenState extends State<InitialScreen> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.goToLogin) {
+      SchedulerBinding.instance?.addPostFrameCallback((_) {
+        _onLoginButtonPressed();
+      });
+    }
+  }
 
   void _onRegisterButtonPressed() {
     PackageConfiguration.navigationService
@@ -26,8 +46,10 @@ class InitialScreen extends StatelessWidget {
                 bottomLeft: Radius.circular(14),
                 bottomRight: Radius.circular(14),
               ),
-              child: Container(
-                color: CustomColors.red,
+              child: ContainerCachedImage(
+                defaultImage: Icons.payment,
+                imageUrl:
+                    'https://makeanapplike.com/wp-content/uploads/2021/12/How-Can-Digital-Payment-Benefit-Entrepreneurs.jpg',
                 height: SizeHelper.hp(48),
               ),
             ),

@@ -1,6 +1,8 @@
+import 'package:design/theme/color/custom_colors.dart';
 import 'package:design/theme/dimension/dimension.dart';
 import 'package:design/widgets/widgets/badge_widget.dart';
 import 'package:design/widgets/widgets/container_cached_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class IconTitleDescriptionWidget extends StatelessWidget {
@@ -12,6 +14,7 @@ class IconTitleDescriptionWidget extends StatelessWidget {
   final String? heroTag;
   final Function()? onTap;
   final Color? imageColor;
+  final Widget? additionalWidget;
   final double imageSize;
   final EdgeInsets margin;
   final EdgeInsets imagePadding;
@@ -27,6 +30,7 @@ class IconTitleDescriptionWidget extends StatelessWidget {
     this.heroTag,
     this.onTap,
     this.imageColor,
+    this.additionalWidget,
     this.imageSize = 80,
     this.margin =
         const EdgeInsets.symmetric(horizontal: Dimension.defaultPadding),
@@ -38,6 +42,51 @@ class IconTitleDescriptionWidget extends StatelessWidget {
     ),
     this.showArrow = false,
   }) : super(key: key);
+
+  factory IconTitleDescriptionWidget.withSwitch({
+    Key? key,
+    required String title,
+    required IconData placeholderImage,
+    required bool switchValue,
+    required Function(bool) onSwitchChanged,
+    double switchSize = 20.0,
+    String? description,
+    String? imageUrl,
+    String? heroTag,
+    Function()? onTap,
+    Color? imageColor,
+    double imageSize = 80,
+    EdgeInsets margin =
+        const EdgeInsets.symmetric(horizontal: Dimension.defaultPadding),
+    EdgeInsets imagePadding = const EdgeInsets.only(
+      left: Dimension.pt5,
+      top: Dimension.pt5,
+      bottom: Dimension.pt5,
+      right: Dimension.defaultPadding,
+    ),
+  }) {
+    return IconTitleDescriptionWidget(
+      title: title,
+      placeholderImage: placeholderImage,
+      additionalWidget: Transform.scale(
+        scale: .8,
+        child: CupertinoSwitch(
+          //trackColor: Colors.red, // **INACTIVE STATE COLOR**
+          activeColor: CustomColors.primaryBlue, // **ACTIVE STATE COLOR**
+          value: switchValue,
+          onChanged: onSwitchChanged,
+        ),
+      ),
+      description: description,
+      imageUrl: imageUrl,
+      heroTag: heroTag,
+      onTap: onTap,
+      imageColor: imageColor,
+      imageSize: imageSize,
+      margin: margin,
+      imagePadding: imagePadding,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +148,14 @@ class IconTitleDescriptionWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                additionalWidget != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                          right: Dimension.defaultPadding,
+                        ),
+                        child: additionalWidget,
+                      )
+                    : Container(),
                 showArrow
                     ? Padding(
                         padding: const EdgeInsets.only(
