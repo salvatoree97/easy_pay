@@ -58,6 +58,7 @@ class _BaseBottomSheetScreenState extends State<BaseBottomSheetScreen> {
         minHeight: 0.0,
         maxHeight: widget.maxHeight ?? SizeHelper.hp(50),
         onBottomSheetSlideClosed: _onBottomSheetSlideClosed,
+        color: Theme.of(context).colorScheme.background,
         backdropEnabled: true,
         bottomSheet: widget.bottomSheetContent,
         bottomSheetBuilder: widget.bottomSheetContentBuilder,

@@ -56,10 +56,13 @@ class _ThemeScreenState extends State<ThemeScreen> {
   }
 
   void _onUpdateTheme(ThemeMode mode) {
+    PersistenceManager.instance.setValue<String>(
+      PersistenceKeys.activeTheme,
+      mode.rawValue,
+    );
     if (mode != _selectedTheme) {
-      setState(() {
-        _selectedTheme = mode;
-      });
+      setState(() => _selectedTheme = mode);
+
       ThemeModeProvider.instance.toggleTheme();
     }
   }

@@ -1,6 +1,7 @@
 import 'package:easy_pay/app/navigation_service.dart';
 import 'package:easy_pay/app/router_service.dart';
 import 'package:easy_pay/splash/splash_screen.dart';
+import 'package:features/features.dart';
 import 'package:flutter/material.dart';
 import 'package:common/common.dart';
 
@@ -19,9 +20,19 @@ class _EasyPayAppState extends State<EasyPayApp> {
   @override
   void initState() {
     super.initState();
+
     ThemeModeProvider.instance.addListener(() {
       setState(() {});
     });
+    setCurrentTheme();
+  }
+
+  void setCurrentTheme() async {
+    final theme = await PersistenceManager.instance
+        .readValue<String>(PersistenceKeys.activeTheme);
+    if (theme == ThemeMode.dark.rawValue) {
+      ThemeModeProvider.instance.toggleTheme();
+    }
   }
 
   // This widget is the root of your application.

@@ -1,7 +1,6 @@
 import 'package:features/profile/redux/biometrics_password_thunk.dart';
 import 'package:flutter/material.dart';
 import 'package:common/common.dart';
-import 'package:design/design.dart';
 
 class BiometricsPasswordScreen extends StatefulWidget {
   const BiometricsPasswordScreen({Key? key}) : super(key: key);
