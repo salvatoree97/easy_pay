@@ -2,7 +2,9 @@ import 'package:common/app/app_state.dart';
 import 'package:common/app/package_configuration.dart';
 import 'package:common/app/routes.dart';
 import 'package:common/firebase/firebase_auth_service.dart';
+import 'package:common/models/common_error.dart';
 import 'package:common/services/biometrics_service.dart';
+import 'package:common/services/error_services.dart';
 import 'package:common/user/redux/action/user_actions.dart';
 import 'package:common/user/redux/api/user_api.dart';
 import 'package:common/user/user_manager.dart';
@@ -16,7 +18,7 @@ ThunkAction<AppState> loginThunk({
   required String password,
   required Function onSuccess,
   required Function onEmailNotConfirmed,
-  required Function onError,
+  required OnError onError,
 }) =>
     (Store<AppState> store) async {
       store.dispatch(UserLoginRequested());
@@ -33,6 +35,10 @@ ThunkAction<AppState> loginThunk({
         FirebaseUser? currentUser = FirebaseAuthService.instance.currentUser;
 
         if (currentUser == null) {
+          onError.call(CommonError(
+            'USER_NULL',
+            CommonError.deafaultError.errorMessage,
+          ));
           return;
         }
 
@@ -78,9 +84,11 @@ ThunkAction<AppState> loginThunk({
           onEmailNotConfirmed.call();
           store.dispatch(UserLoginSuccesful(currentUser));
         } catch (error) {
+          onError.call(error);
           store.dispatch(UserFetchFailed());
         }
       } catch (error) {
+        onError.call(error);
         store.dispatch(UserFetchFailed());
       }
     };

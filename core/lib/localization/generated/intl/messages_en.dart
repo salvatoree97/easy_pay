@@ -21,10 +21,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(name) => "Hi ${name}, almost done!";
 
+  static String m1(code) => "Ops, something went wront %${code}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "almost_done_message": m0,
         "cancel_button_text": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "confirm_email_sent_message": MessageLookupByLibrary.simpleMessage(
+            "We have sent a confirmation email to the address you provided. You will be redirected to the app once you have confirmed."),
         "confirm_logout_message": MessageLookupByLibrary.simpleMessage(
             "Pressing confirm will exit the app and you will need to login again. Are you sure you want to continue?"),
         "confirm_password_title":
@@ -38,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "credentials_description":
             MessageLookupByLibrary.simpleMessage("Insert your credentials"),
         "dark_theme_title": MessageLookupByLibrary.simpleMessage("Dark theme"),
+        "default_error_message": m1,
         "email_format_error_message":
             MessageLookupByLibrary.simpleMessage("The email is not valid"),
         "email_placeholder":
@@ -65,6 +70,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "name_placeholder":
             MessageLookupByLibrary.simpleMessage("Insert your name"),
         "name_title": MessageLookupByLibrary.simpleMessage("Name"),
+        "no_internet_error_message": MessageLookupByLibrary.simpleMessage(
+            "Internet connection not available. Try again later"),
+        "not_authorized_error_message": MessageLookupByLibrary.simpleMessage(
+            "Invalid credentials. Try again"),
         "notifications_title":
             MessageLookupByLibrary.simpleMessage("Notifications"),
         "password_format_error_message": MessageLookupByLibrary.simpleMessage(
@@ -92,6 +101,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "same_password_error_message": MessageLookupByLibrary.simpleMessage(
             "The two password must be equal"),
         "search_placeholder": MessageLookupByLibrary.simpleMessage("Search"),
+        "set_biometry_error_message": MessageLookupByLibrary.simpleMessage(
+            "Biometrics could not be set up"),
+        "set_biometry_success_message": MessageLookupByLibrary.simpleMessage(
+            "Biometrics set up successfully"),
         "set_biometry_title":
             MessageLookupByLibrary.simpleMessage("Set biometry"),
         "set_password_description": MessageLookupByLibrary.simpleMessage(

@@ -76,8 +76,7 @@ class _RegistrationThirdStepScreenState
       },
       builder: (ctx, vm) => ResultBaseScreen(
         buttonTitle: S.of(context).continue_button_text,
-        description:
-            'Abbiamo inviato una mail di conferma all\'indirizzo da te fornito. Verrai reindirizzato all\' interno dell\'app una volta confermato.',
+        description: S.of(context).confirm_email_sent_message,
         onButtonTap: _restartTimer,
       ),
     );

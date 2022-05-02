@@ -28,6 +28,42 @@ class NavigationService implements NavigationServiceInterface {
   }
 
   @override
+  void showSnackBar({
+    BuildContext? context,
+    required String message,
+    SnackBarStyle style = SnackBarStyle.error,
+  }) {
+    final buildContext = context ?? topContext;
+    if (buildContext == null) {
+      return;
+    }
+
+    switch (style) {
+      case SnackBarStyle.error:
+        return showTopSnackBar(
+          context: buildContext,
+          child: CustomSnackBar.error(
+            message: message,
+          ),
+        );
+      case SnackBarStyle.info:
+        return showTopSnackBar(
+          context: buildContext,
+          child: CustomSnackBar.info(
+            message: message,
+          ),
+        );
+      case SnackBarStyle.success:
+        return showTopSnackBar(
+          context: buildContext,
+          child: CustomSnackBar.success(
+            message: message,
+          ),
+        );
+    }
+  }
+
+  @override
   Future<dynamic>? push(String routeName, {arguments}) {
     if (topContext == null) return null;
     return Navigator.of(topContext!).pushNamed(routeName, arguments: arguments);

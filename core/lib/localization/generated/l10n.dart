@@ -569,6 +569,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Abbiamo inviato una mail di conferma all'indirizzo da te fornito. Verrai reindirizzato all'interno dell'app una volta confermato.`
+  String get confirm_email_sent_message {
+    return Intl.message(
+      'Abbiamo inviato una mail di conferma all\'indirizzo da te fornito. Verrai reindirizzato all\'interno dell\'app una volta confermato.',
+      name: 'confirm_email_sent_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Non è stato possibile impostare la biometria`
+  String get set_biometry_error_message {
+    return Intl.message(
+      'Non è stato possibile impostare la biometria',
+      name: 'set_biometry_error_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Biometria impostata con successo`
+  String get set_biometry_success_message {
+    return Intl.message(
+      'Biometria impostata con successo',
+      name: 'set_biometry_success_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ops, qualcosa è andato storto ${code}`
+  String default_error_message(Object code) {
+    return Intl.message(
+      'Ops, qualcosa è andato storto \$$code',
+      name: 'default_error_message',
+      desc: '',
+      args: [code],
+    );
+  }
+
+  /// `Credenziali non valide. Riprova`
+  String get not_authorized_error_message {
+    return Intl.message(
+      'Credenziali non valide. Riprova',
+      name: 'not_authorized_error_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connessione internet assente. Riprova più tardi`
+  String get no_internet_error_message {
+    return Intl.message(
+      'Connessione internet assente. Riprova più tardi',
+      name: 'no_internet_error_message',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

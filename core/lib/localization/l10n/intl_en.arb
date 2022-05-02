@@ -50,5 +50,11 @@
   "face_id_login_title": "Login with FaceID",
   "fingerprint_login_title": "Login with fingerprint",
   "ligh_theme_title": "Light theme",
-  "dark_theme_title": "Dark theme"
+  "dark_theme_title": "Dark theme",
+  "confirm_email_sent_message": "We have sent a confirmation email to the address you provided. You will be redirected to the app once you have confirmed.",
+  "set_biometry_error_message": "Biometrics could not be set up",
+  "set_biometry_success_message": "Biometrics set up successfully",
+  "default_error_message": "Ops, something went wront %{code}",
+  "not_authorized_error_message": "Invalid credentials. Try again",
+  "no_internet_error_message": "Internet connection not available. Try again later"
 }

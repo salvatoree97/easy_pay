@@ -21,10 +21,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(name) => "Ciao ${name}, ci siamo quasi!";
 
+  static String m1(code) => "Ops, qualcosa è andato storto \$${code}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "almost_done_message": m0,
         "cancel_button_text": MessageLookupByLibrary.simpleMessage("Annulla"),
+        "confirm_email_sent_message": MessageLookupByLibrary.simpleMessage(
+            "Abbiamo inviato una mail di conferma all\'indirizzo da te fornito. Verrai reindirizzato all\'interno dell\'app una volta confermato."),
         "confirm_logout_message": MessageLookupByLibrary.simpleMessage(
             "Premendo conferma uscirai dall\'app e dovrai rieffettuare l\'accesso. Sei sicuro di voler continuare?"),
         "confirm_password_title":
@@ -38,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "credentials_description": MessageLookupByLibrary.simpleMessage(
             "Inserisci le tue credenziali"),
         "dark_theme_title": MessageLookupByLibrary.simpleMessage("Tema Scuro"),
+        "default_error_message": m1,
         "email_format_error_message":
             MessageLookupByLibrary.simpleMessage("L\'email non è valida"),
         "email_placeholder":
@@ -66,6 +71,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "name_placeholder":
             MessageLookupByLibrary.simpleMessage("Inserisci il tuo nome"),
         "name_title": MessageLookupByLibrary.simpleMessage("Nome"),
+        "no_internet_error_message": MessageLookupByLibrary.simpleMessage(
+            "Connessione internet assente. Riprova più tardi"),
+        "not_authorized_error_message": MessageLookupByLibrary.simpleMessage(
+            "Credenziali non valide. Riprova"),
         "notifications_title":
             MessageLookupByLibrary.simpleMessage("Notifiche"),
         "password_format_error_message": MessageLookupByLibrary.simpleMessage(
@@ -97,6 +106,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "search_placeholder": MessageLookupByLibrary.simpleMessage("Cerca"),
         "set_biometry_description": MessageLookupByLibrary.simpleMessage(
             "Vuoi abilitare la biometria per accedere all\'app più velocemente?"),
+        "set_biometry_error_message": MessageLookupByLibrary.simpleMessage(
+            "Non è stato possibile impostare la biometria"),
+        "set_biometry_success_message": MessageLookupByLibrary.simpleMessage(
+            "Biometria impostata con successo"),
         "set_biometry_title":
             MessageLookupByLibrary.simpleMessage("Imposta la biometria"),
         "set_password_description": MessageLookupByLibrary.simpleMessage(

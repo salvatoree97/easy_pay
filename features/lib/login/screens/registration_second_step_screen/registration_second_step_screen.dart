@@ -85,19 +85,16 @@ class _RegistrationSecondStepScreenState
           userImage: null,
           onSuccess: () => PackageConfiguration.navigationService
               .push(AppRoutes.registrationThirdStepScreen),
+          onError: _onError,
         ),
       );
-      // PackageConfiguration.navigationService.push(
-      //   AppRoutes.registrationSecondStepScreen,
-      //   arguments: {
-      //     'name': _nameController.text,
-      //     'surname': _surnameController.text,
-      //     'fiscalCode': _fiscalCodeController.text,
-      //   },
-      // );
     }
     _autovalidateMode = AutovalidateMode.always;
     setState(() {});
+  }
+
+  void _onError(dynamic error) {
+    ErrorService.instance.showError(error: error, context: context);
   }
 
   @override

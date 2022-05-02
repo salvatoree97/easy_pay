@@ -11,10 +11,12 @@ export 'package:local_auth/local_auth.dart';
 ///[]
 export 'package:common/interceptors/oauth_interceptor.dart';
 export 'package:common/models/notification_model.dart';
+export 'package:common/models/common_error.dart';
 
 ///[Services]
 export 'package:common/services/route_resolver_service_interface.dart';
 export 'package:common/services/biometrics_service.dart';
+export 'package:common/services/error_services.dart';
 
 ///[Firebase]
 export 'package:common/firebase/firebase_service.dart';

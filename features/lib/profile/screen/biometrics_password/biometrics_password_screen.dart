@@ -92,8 +92,13 @@ class _BiometricsPasswordScreenState extends State<BiometricsPasswordScreen> {
     Navigator.of(context).pop(true);
   }
 
-  void _onError() {
+  void _onError(dynamic error) {
     _setLoading(false);
+    if (error != null) {
+      ErrorService.instance.showError(error: error, context: context);
+      return;
+    }
+
     _sheetController.close();
     Navigator.of(context).pop(false);
   }

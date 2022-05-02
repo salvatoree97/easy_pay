@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:common/app/app_state.dart';
 import 'package:bffe/bffe.dart';
 import 'package:common/firebase/firebase_auth_service.dart';
+import 'package:common/models/common_error.dart';
+import 'package:common/services/error_services.dart';
 import 'package:common/user/redux/action/user_actions.dart';
 import 'package:common/user/redux/service/set_user_dto.dart';
 import 'package:core/core.dart';
@@ -16,6 +18,7 @@ ThunkAction<AppState> registrationThunk({
   String? fiscalCode,
   File? userImage,
   required Function() onSuccess,
+  required OnError onError,
 }) =>
     (Store<AppState> store) async {
       store.dispatch(UserRegistrationRequested());
@@ -29,7 +32,7 @@ ThunkAction<AppState> registrationThunk({
         Logger.instance
             .info('Firebase user: ${FirebaseAuthService.instance.currentUser}');
 
-        if (FirebaseAuthService.instance.currentUser != null) {
+        if (FirebaseAuthService.instance.currentUser == null) {
           final dto = SetUserDTO(
             email: username,
             lastname: lastname,
@@ -72,12 +75,13 @@ ThunkAction<AppState> registrationThunk({
         } else {
           Logger.instance.error(
               'Error for createUserWithEmailAndPassword because FirebaseAuth.instance.currentUser is null');
+          onError.call(CommonError.deafaultError);
           store.dispatch(UserRegistrationFailed());
         }
       } on Exception catch (error) {
         Logger.instance.error(
             'Error for createUserWithEmailAndPassword wiht: error: $error');
-        //ErrorService.instance.showError(error: error);
+        onError.call(error);
         store.dispatch(UserRegistrationFailed());
       }
     };

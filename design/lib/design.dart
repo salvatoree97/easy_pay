@@ -20,6 +20,8 @@ export 'package:design/routes/modal_fade_page_route.dart';
 export 'package:design/routes/clear_page_route.dart';
 
 ///[Widgets]
+export 'package:design/widgets/snack_bar/custom_snack_bar.dart';
+export 'package:design/widgets/snack_bar/top_snack_bar.dart';
 export 'package:design/widgets/button/buttons_stack_widget.dart';
 export 'package:design/widgets/button/custom_elevated_button.dart';
 export 'package:design/widgets/button/text_button_widget.dart';

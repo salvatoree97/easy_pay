@@ -104,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _onError() {}
+  void _onError(dynamic errror) {
+    ErrorService.instance.showError(error: errror, context: context);
+  }
 
   void _onEmailNotConfirmed() {
     PackageConfiguration.navigationService

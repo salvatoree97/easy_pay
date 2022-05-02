@@ -3,12 +3,12 @@ import 'package:common/common.dart';
 ThunkAction<AppState> biometricsPasswordThunk({
   required String password,
   required Function() onSuccess,
-  required Function() onError,
+  required OnError onError,
 }) =>
     (Store<AppState> store) async {
       final username = store.state.userState.firebaseUser?.email;
       if (username == null) {
-        onError.call();
+        onError.call(CommonError.deafaultError);
         return;
       }
       try {
@@ -22,9 +22,9 @@ ThunkAction<AppState> biometricsPasswordThunk({
         if (isAuhtenticated) {
           onSuccess.call();
         } else {
-          onError.call();
+          onError.call(null);
         }
       } catch (error) {
-        onError.call();
+        onError.call(error);
       }
     };

@@ -16,32 +16,23 @@ extension ResponseExceptionConvertible on DioError {
 ///[ResponseException] is used to handle response exeptions.
 ///It should be create passing response body in [ResponseException.fromJson]
 class ResponseException implements Exception {
-  final String type;
-  final String message;
-  final String? returnCode;
+  final String errorCode;
+  final String errorDescription;
 
   ResponseException({
-    required this.type,
-    required this.message,
-    this.returnCode,
+    required this.errorCode,
+    required this.errorDescription,
   }) : super();
 
   @override
   String toString() {
-    return '''Network request failed with error of type: $type and message: $message''';
+    return '''Network request failed with error of type: $errorCode and message: $errorDescription''';
   }
 
   factory ResponseException.fromJson(Map<String, dynamic> json) {
-    if (json['__type'] == null && json['code'] != null) {
-      return ResponseException(
-        type: json['code'],
-        message: json['message'],
-      );
-    } else {
-      return ResponseException(
-        type: json['__type'],
-        message: json['message'],
-      );
-    }
+    return ResponseException(
+      errorCode: json['errorCode'],
+      errorDescription: json['errorDescription'],
+    );
   }
 }

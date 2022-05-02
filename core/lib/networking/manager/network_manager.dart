@@ -59,8 +59,8 @@ class NetworkManager {
     try {
       if (response == null) {
         throw ResponseException(
-          type: "NullResponse",
-          message: "The response is null",
+          errorCode: "RES_NULL",
+          errorDescription: "The response is null",
         );
       } else {
         //This part is usefull for empty body
@@ -89,7 +89,7 @@ class NetworkManager {
       if (exception.error is SocketException) {
         return const SocketException('No internet connection');
       }
-      return exception;
+      return exception.toResponseException();
     }
     return exception;
   }

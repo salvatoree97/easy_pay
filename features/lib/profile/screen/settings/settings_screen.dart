@@ -72,7 +72,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void _onBiometricsComplete(bool isAuthenticated) {
     _refreshBiometricsValue();
-    //show success or error
+    if (isAuthenticated) {
+      PackageConfiguration.navigationService.showSnackBar(
+        message: S.of(context).set_biometry_success_message,
+        style: SnackBarStyle.success,
+      );
+    } else {
+      PackageConfiguration.navigationService.showSnackBar(
+        message: S.of(context).set_biometry_error_message,
+      );
+    }
   }
 
   @override

@@ -51,5 +51,11 @@
   "face_id_login_title": "Login con FaceID",
   "fingerprint_login_title": "Login con impronta digitale",
   "ligh_theme_title": "Tema Chiaro",
-  "dark_theme_title": "Tema Scuro"
+  "dark_theme_title": "Tema Scuro",
+  "confirm_email_sent_message": "Abbiamo inviato una mail di conferma all'indirizzo da te fornito. Verrai reindirizzato all'interno dell'app una volta confermato.",
+  "set_biometry_error_message": "Non è stato possibile impostare la biometria",
+  "set_biometry_success_message": "Biometria impostata con successo",
+  "default_error_message": "Ops, qualcosa è andato storto ${code}",
+  "not_authorized_error_message": "Credenziali non valide. Riprova",
+  "no_internet_error_message": "Connessione internet assente. Riprova più tardi"
 }
