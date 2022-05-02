@@ -103,8 +103,8 @@ class _RegistrationSecondStepScreenState
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(
-        title: 'Registrazione',
+      appBar: DefaultAppBar(
+        title: S.of(context).registration_title,
       ),
       body: CustomFormWidget(
         formState: _formState,
@@ -115,7 +115,7 @@ class _RegistrationSecondStepScreenState
             padding: const EdgeInsets.symmetric(
                 horizontal: Dimension.defaultPadding),
             child: Text(
-              'Ciao ${widget.name}, ci siamo quasi!',
+              S.of(context).almost_done_message(widget.name),
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
@@ -127,7 +127,7 @@ class _RegistrationSecondStepScreenState
             padding: const EdgeInsets.symmetric(
                 horizontal: Dimension.defaultPadding),
             child: Text(
-              'Crea le tue credenziali!',
+              S.of(context).create_your_credentials_description,
               style: Theme.of(context)
                   .textTheme
                   .labelSmall
@@ -136,12 +136,12 @@ class _RegistrationSecondStepScreenState
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Email',
-            placeholder: 'Inserisci la tua email',
+            title: S.of(context).email_title,
+            placeholder: S.of(context).email_placeholder,
             value: _emailController.text,
             validationRules: [
-              IsEmail(errorMessage: 'L\'email non è valida'),
-              IsFilled(errorMessage: 'Il valore è obbligatorio')
+              IsEmail(errorMessage: S.of(context).email_format_error_message),
+              IsFilled(errorMessage: S.of(context).required_error_message)
             ],
             controller: _emailController,
             onSubmitted: (_) => _passwordFocusNode.requestFocus(),
@@ -149,14 +149,13 @@ class _RegistrationSecondStepScreenState
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Crea Password',
-            placeholder: 'Inserisci la password',
+            title: S.of(context).create_password_title,
+            placeholder: S.of(context).password_placeholder,
             value: _passwordController.text,
             validationRules: [
               IsPassword(
-                  errorMessage:
-                      'La password deve contenere almeno una lettera maiuscola e un numero'),
-              IsFilled(errorMessage: 'Il valore è obbligatorio')
+                  errorMessage: S.of(context).password_format_error_message),
+              IsFilled(errorMessage: S.of(context).required_error_message)
             ],
             obscureText: _obscurePassword,
             suffixWidget: PasswordSuffixWidget(
@@ -169,18 +168,17 @@ class _RegistrationSecondStepScreenState
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Conferma Password',
-            placeholder: 'Inserisci la password',
+            title: S.of(context).confirm_password_title,
+            placeholder: S.of(context).password_placeholder,
             value: _confirmPasswordController.text,
             validationRules: [
               IsPassword(
-                  errorMessage:
-                      'La password deve contenere almeno una lettera maiuscola e un numero'),
+                  errorMessage: S.of(context).password_format_error_message),
               IsEqual(
-                errorMessage: 'Le due password devono essere uguali',
+                errorMessage: S.of(context).same_password_error_message,
                 lastValue: _passwordController.text,
               ),
-              IsFilled(errorMessage: 'Il valore è obbligatorio')
+              IsFilled(errorMessage: S.of(context).required_error_message)
             ],
             obscureText: _obscureConfirmPassword,
             suffixWidget: PasswordSuffixWidget(
@@ -197,7 +195,7 @@ class _RegistrationSecondStepScreenState
           StoreConnector<AppState, UserState>(
             converter: (store) => store.state.userState,
             builder: (_, vm) => CustomElevatedButton(
-              title: 'Continua',
+              title: S.of(context).continue_button_text,
               enabled: _isButtonEnabled,
               isLoading: vm.isLoading,
               onPressed: _onButtonPressed,

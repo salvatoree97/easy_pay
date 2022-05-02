@@ -35,9 +35,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     PackageConfiguration.navigationService.push(
       AppRoutes.optionSheet,
       arguments: OptionBottomSheetParams(
-        title: 'Logout',
-        description:
-            'Premendo conferma uscirai dall\'app e dovrai rieffettuare l\'access. Sei sicuro di voler continuare?',
+        title: S.of(context).logout_title,
+        description: S.of(context).confirm_logout_message,
         onConfirmTapped: _performLogout,
       ),
     );
@@ -89,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               [
                 const SizedBox(height: Dimension.defaultPadding),
                 IconTitleDescriptionWidget(
-                  title: 'Personal Data',
+                  title: S.of(context).personal_data_title,
                   placeholderImage: Icons.person,
                   imageSize: 30,
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
@@ -99,7 +98,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 IconTitleDescriptionWidget(
-                  title: 'Tema',
+                  title: S.of(context).theme_title,
                   placeholderImage: Icons.color_lens_rounded,
                   imageSize: 30,
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
@@ -109,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 IconTitleDescriptionWidget(
-                  title: 'Notifiche',
+                  title: S.of(context).notifications_title,
                   placeholderImage: Icons.notifications_rounded,
                   imageSize: 30,
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
@@ -119,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 IconTitleDescriptionWidget(
-                  title: 'Impostazioni',
+                  title: S.of(context).settings_title,
                   placeholderImage: Icons.settings_rounded,
                   imageSize: 30,
                   imagePadding: const EdgeInsets.all(Dimension.defaultPadding),
@@ -129,9 +128,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: Dimension.defaultPadding),
                 TitleDescriptionButtonWidget(
-                  title: 'Versione',
+                  title: S.of(context).version_title,
                   description: 'Num versione',
-                  buttonTitle: 'Logout',
+                  buttonTitle: S.of(context).logout_button_title,
                   onTap: _onLogoutTapped,
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                   borderRadius: Dimension.pt10,

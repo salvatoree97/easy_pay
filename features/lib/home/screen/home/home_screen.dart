@@ -9,8 +9,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(
-        title: 'Home',
+      appBar: DefaultAppBar(
+        title: S.of(context).home,
         barStyle: AppBarStyle.textLeft,
       ),
       body: StoreConnector<AppState, HomeViewModel>(
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           builder: (context, _) => Column(
             children: [
               CustomFormTextField(
-                placeholder: 'Search',
+                placeholder: S.of(context).search_placeholder,
                 value: viewModel.serchText ?? '',
                 isEnabled: !viewModel.state.isLoading && !viewModel.state.error,
                 onChanged: viewModel.updateSearchText,

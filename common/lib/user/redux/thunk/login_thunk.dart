@@ -90,9 +90,8 @@ Future _handleBiometricsFlow(String password) async {
       await PackageConfiguration.navigationService.push(
     AppRoutes.optionSheet,
     arguments: OptionBottomSheetParams(
-      title: 'Imposta la biometria',
-      description:
-          'Vuoi abilitare la biometria per accedere all\'app più velocemente.',
+      title: S.current.set_biometry_title,
+      description: S.current.set_biometry_description,
     ),
   );
 

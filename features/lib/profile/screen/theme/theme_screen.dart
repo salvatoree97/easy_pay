@@ -16,9 +16,9 @@ extension $ThemeString on ThemeMode {
   String get title {
     switch (this) {
       case ThemeMode.light:
-        return 'Tema Chiaro';
+        return S.current.ligh_theme_title;
       case ThemeMode.dark:
-        return 'Tema Scuro';
+        return S.current.dark_theme_title;
       case ThemeMode.system:
         return '';
     }
@@ -70,17 +70,16 @@ class _ThemeScreenState extends State<ThemeScreen> {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(title: 'Tema'),
+      appBar: DefaultAppBar(title: S.of(context).theme_title),
       body: Column(
         children: [
           const SizedBox(height: 20),
           TitleDescriptionWidget(
-            title: 'Puoi cambiare il tema dell\'app',
+            title: S.of(context).theme_description,
             titleTextStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w500,
                 color: Theme.of(context).colorScheme.onBackground),
-            description:
-                'Per una migliore esperienza utente, qui puoi decidere come impostare l\'aspetto dell\'applicazione.',
+            description: S.of(context).theme_cortesy_message,
             descriptionTextStyle: Theme.of(context)
                 .textTheme
                 .bodyMedium

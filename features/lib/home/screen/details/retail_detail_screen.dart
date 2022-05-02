@@ -17,17 +17,17 @@ class RetailDetailScreen extends StatelessWidget {
           [
             const SizedBox(height: Dimension.pt10),
             TitleDescriptionWidget(
-              title: 'Attività commerciale',
+              title: S.of(context).retail_detail_name,
               description: retailModel.name,
             ),
             const SizedBox(height: Dimension.pt30),
             TitleDescriptionWidget(
-              title: 'Descrizione',
+              title: S.of(context).retail_detail_description,
               description: retailModel.description,
             ),
             const SizedBox(height: Dimension.pt30),
             TitleDescriptionWidget(
-              title: 'Indirizzo',
+              title: S.of(context).retail_detail_address,
               description: retailModel.address ?? "-",
             ),
           ],
@@ -50,7 +50,7 @@ class RetailDetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TitleDescriptionWidget(
-                title: 'Sconto',
+                title: S.of(context).retail_detail_discount,
                 description: retailModel.discountPercentageString,
                 spacing: 0,
                 titleTextStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -63,7 +63,7 @@ class RetailDetailScreen extends StatelessWidget {
               ),
               CustomElevatedButton(
                 padding: EdgeInsets.zero,
-                title: 'Paga',
+                title: S.of(context).retail_detail_pay_button,
                 onPressed: () {},
                 width: SizeHelper.wp(50),
               )

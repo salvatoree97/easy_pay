@@ -111,9 +111,8 @@ class _BiometricsPasswordScreenState extends State<BiometricsPasswordScreen> {
         children: [
           const SizedBox(height: 20),
           TitleDescriptionWidget(
-            title: 'Inserisci la password',
-            description:
-                'Configura la password da salvare utilizzando la biometria',
+            title: S.of(context).set_password_title,
+            description: S.of(context).set_password_description,
             titleTextStyle: Theme.of(context)
                 .textTheme
                 .titleSmall
@@ -125,14 +124,13 @@ class _BiometricsPasswordScreenState extends State<BiometricsPasswordScreen> {
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Crea Password',
-            placeholder: 'Inserisci la password',
+            title: S.of(context).create_password_title,
+            placeholder: S.of(context).password_placeholder,
             value: _passwordController.text,
             validationRules: [
               IsPassword(
-                  errorMessage:
-                      'La password deve contenere almeno una lettera maiuscola e un numero'),
-              IsFilled(errorMessage: 'Il valore è obbligatorio')
+                  errorMessage: S.of(context).password_format_error_message),
+              IsFilled(errorMessage: S.of(context).required_error_message)
             ],
             obscureText: _obscurePassword,
             suffixWidget: PasswordSuffixWidget(
@@ -145,18 +143,17 @@ class _BiometricsPasswordScreenState extends State<BiometricsPasswordScreen> {
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Conferma Password',
-            placeholder: 'Inserisci la password',
+            title: S.of(context).confirm_password_title,
+            placeholder: S.of(context).password_placeholder,
             value: _confirmPasswordController.text,
             validationRules: [
               IsPassword(
-                  errorMessage:
-                      'La password deve contenere almeno una lettera maiuscola e un numero'),
+                  errorMessage: S.of(context).password_format_error_message),
               IsEqual(
-                errorMessage: 'Le due password devono essere uguali',
+                errorMessage: S.of(context).same_password_error_message,
                 lastValue: _passwordController.text,
               ),
-              IsFilled(errorMessage: 'Il valore è obbligatorio')
+              IsFilled(errorMessage: S.of(context).required_error_message)
             ],
             obscureText: _obscureConfirmPassword,
             suffixWidget: PasswordSuffixWidget(
@@ -171,19 +168,19 @@ class _BiometricsPasswordScreenState extends State<BiometricsPasswordScreen> {
           ButtonsStackWidget(
             buttons: [
               CustomElevatedButton(
-                title: 'Conferma',
-                onPressed: _onConfirmTapped,
+                title: S.of(context).cancel_button_text,
+                onPressed: _onCancelTapped,
                 padding: const EdgeInsets.only(left: Dimension.defaultPadding),
+                width: SizeHelper.wp(42),
+                style: CustomButtonTheme.secondaryElavatedButtonTheme.style,
+              ),
+              CustomElevatedButton(
+                title: S.of(context).confirm_password_title,
+                onPressed: _onConfirmTapped,
+                padding: const EdgeInsets.only(right: Dimension.defaultPadding),
                 width: SizeHelper.wp(42),
                 enabled: _isButtonEnabled,
                 isLoading: _isLoading,
-              ),
-              CustomElevatedButton(
-                title: 'Annulla',
-                onPressed: _onCancelTapped,
-                padding: const EdgeInsets.only(right: Dimension.defaultPadding),
-                width: SizeHelper.wp(42),
-                style: CustomButtonTheme.secondaryElavatedButtonTheme.style,
               ),
             ],
           ),

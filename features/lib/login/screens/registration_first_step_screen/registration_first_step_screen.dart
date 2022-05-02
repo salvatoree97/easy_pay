@@ -72,8 +72,8 @@ class _RegistrationFirstStepScreenState
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(
-        title: 'Registrazione',
+      appBar: DefaultAppBar(
+        title: S.of(context).registration_title,
       ),
       body: CustomFormWidget(
         formState: _formState,
@@ -84,7 +84,7 @@ class _RegistrationFirstStepScreenState
             padding: const EdgeInsets.symmetric(
                 horizontal: Dimension.defaultPadding),
             child: Text(
-              'Inserisci i tuoi dati personali',
+              S.of(context).personal_data_description,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
@@ -93,11 +93,11 @@ class _RegistrationFirstStepScreenState
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Nome',
-            placeholder: 'Inserisci il nome',
+            title: S.of(context).name_title,
+            placeholder: S.of(context).name_placeholder,
             value: _nameController.text,
             validationRules: [
-              IsFilled(errorMessage: 'Il valore è obbligatorio'),
+              IsFilled(errorMessage: S.of(context).required_error_message),
             ],
             controller: _nameController,
             onSubmitted: (_) => _lastnameFocusNode.requestFocus(),
@@ -105,11 +105,11 @@ class _RegistrationFirstStepScreenState
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Cognome',
-            placeholder: 'Inserisci il cognome',
+            title: S.of(context).lastname_title,
+            placeholder: S.of(context).lastname_placeholder,
             value: _lastnameController.text,
             validationRules: [
-              IsFilled(errorMessage: 'Il valore è obbligatorio'),
+              IsFilled(errorMessage: S.of(context).required_error_message),
             ],
             controller: _lastnameController,
             onSubmitted: (_) => _fiscalCodeNode.requestFocus(),
@@ -117,12 +117,10 @@ class _RegistrationFirstStepScreenState
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Codice Fiscale',
-            placeholder: 'Inserisci il tuo codice fiscale',
+            title: S.of(context).fiscalcode_title,
+            placeholder: S.of(context).fiscalcode_placeholder,
             value: _fiscalCodeController.text,
-            validationRules: [
-              IsFilled(errorMessage: 'Il valore è obbligatorio'),
-            ],
+            validationRules: const [],
             controller: _fiscalCodeController,
             focusNode: _fiscalCodeNode,
             onSubmitted: (_) => _onButtonPressed(),
@@ -131,7 +129,7 @@ class _RegistrationFirstStepScreenState
           Expanded(child: Container()),
           const SizedBox(height: 20),
           CustomElevatedButton(
-            title: 'Continua',
+            title: S.of(context).continue_button_text,
             enabled: _isButtonEnabled,
             onPressed: _onButtonPressed,
           ),

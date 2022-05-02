@@ -8,7 +8,7 @@ class PersonalDataScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(title: 'Dati personali'),
+      appBar: DefaultAppBar(title: S.of(context).personal_data_title),
       body: StoreConnector<AppState, UserModel?>(
         converter: (store) => store.state.userState.user,
         builder: (ctx, user) => SingleChildScrollView(
@@ -17,12 +17,12 @@ class PersonalDataScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               TitleDescriptionWidget(
-                title: 'Nome',
+                title: S.of(context).name_title,
                 description: user?.nameDescription,
               ),
               const SizedBox(height: 20),
               TitleDescriptionWidget(
-                title: 'Email',
+                title: S.of(context).email_title,
                 description: user?.email,
               ),
             ],

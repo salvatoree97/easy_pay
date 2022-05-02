@@ -114,8 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(
-        title: 'Login',
+      appBar: DefaultAppBar(
+        title: S.of(context).login_title,
       ),
       body: CustomFormWidget(
         formState: _formState,
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.symmetric(
                 horizontal: Dimension.defaultPadding),
             child: Text(
-              'Inserisci le tue credenziali',
+              S.of(context).credentials_description,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
@@ -135,12 +135,12 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Email',
-            placeholder: 'Inserisci la tua email',
+            title: S.of(context).email_title,
+            placeholder: S.of(context).email_placeholder,
             value: _emailController.text,
             validationRules: [
-              IsFilled(errorMessage: 'Il valore è obbligatorio'),
-              IsEmail(errorMessage: 'L\'email non è valida'),
+              IsFilled(errorMessage: S.of(context).required_error_message),
+              IsEmail(errorMessage: S.of(context).email_format_error_message),
             ],
             controller: _emailController,
             onSubmitted: (_) => _passwordFocusNode.requestFocus(),
@@ -148,11 +148,11 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           const SizedBox(height: 20),
           CustomFormTextField(
-            title: 'Password',
-            placeholder: 'Inserisci la tua password',
+            title: S.of(context).password_title,
+            placeholder: S.of(context).password_placeholder,
             value: _passwordController.text,
             validationRules: [
-              IsFilled(errorMessage: 'Il valore è obbligatorio'),
+              IsFilled(errorMessage: S.of(context).required_error_message),
             ],
             obscureText: _obscurePassword,
             suffixWidget: PasswordSuffixWidget(
@@ -169,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
           StoreConnector<AppState, UserState>(
             converter: (store) => store.state.userState,
             builder: (ctx, state) => CustomElevatedButton(
-              title: 'Continua',
+              title: S.of(context).continue_button_text,
               enabled: _isButtonEnabled,
               isLoading: state.isLoading,
               onPressed: _onButtonPressed,

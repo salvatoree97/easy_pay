@@ -11,7 +11,7 @@ pub-all:
 	sh ./flutterpuball.sh
 
 update-strings:
-	cd core && flutter pub run intl_utils:generate
+	cd core && fvm flutter pub run intl_utils:generate
 
 reboot:
 	make clean

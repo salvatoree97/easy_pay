@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class HomeElement extends TabBarElement {
   HomeElement()
       : super(
-          tabName: 'Home',
+          tabName: S.current.home,
           icon: Icons.home_rounded,
           index: 0,
           navigator: const HomeNavigator(),

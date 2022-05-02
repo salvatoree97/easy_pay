@@ -79,14 +79,14 @@ class _InitialScreenState extends State<InitialScreen> {
                   padding:
                       const EdgeInsets.only(left: Dimension.defaultPadding),
                   width: SizeHelper.wp(42),
-                  title: 'Registrati',
+                  title: S.of(context).initial_registration_button_title,
                   onPressed: _onRegisterButtonPressed,
                 ),
                 CustomElevatedButton(
                   padding:
                       const EdgeInsets.only(right: Dimension.defaultPadding),
                   width: SizeHelper.wp(42),
-                  title: 'Login',
+                  title: S.of(context).initial_login_button_title,
                   onPressed: _onLoginButtonPressed,
                   style: CustomButtonTheme.secondaryElavatedButtonTheme.style,
                 ),

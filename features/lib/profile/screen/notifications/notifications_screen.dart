@@ -7,7 +7,7 @@ class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      appBar: const DefaultAppBar(title: 'Notifiche'),
+      appBar: DefaultAppBar(title: S.of(context).notifications_title),
       body: Container(),
     );
   }

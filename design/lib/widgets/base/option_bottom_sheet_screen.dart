@@ -7,14 +7,15 @@ import 'package:design/widgets/button/buttons_stack_widget.dart';
 import 'package:design/widgets/button/custom_elevated_button.dart';
 import 'package:design/widgets/widgets/title_description_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:core/core.dart';
 
 class OptionBottomSheetParams {
   final String title;
   final String description;
   final Function()? onConfirmTapped;
   final Function()? onCancelTapped;
-  final String confirmButtonTitle;
-  final String cancelButtonTitle;
+  final String? confirmButtonTitle;
+  final String? cancelButtonTitle;
   final bool goBack;
 
   OptionBottomSheetParams({
@@ -22,8 +23,8 @@ class OptionBottomSheetParams {
     required this.description,
     this.onConfirmTapped,
     this.onCancelTapped,
-    this.confirmButtonTitle = 'Conferma',
-    this.cancelButtonTitle = 'Annulla',
+    this.confirmButtonTitle,
+    this.cancelButtonTitle,
     this.goBack = false,
   });
 }
@@ -107,7 +108,8 @@ class _OptionBottomSheetScreenState extends State<OptionBottomSheetScreen> {
                   ButtonsStackWidget(
                     buttons: [
                       CustomElevatedButton(
-                        title: widget.params.cancelButtonTitle,
+                        title: widget.params.cancelButtonTitle ??
+                            S.of(context).cancel_button_text,
                         onPressed: _onCancelTapped,
                         padding: const EdgeInsets.only(
                             left: Dimension.defaultPadding),
@@ -116,7 +118,8 @@ class _OptionBottomSheetScreenState extends State<OptionBottomSheetScreen> {
                             .secondaryElavatedButtonTheme.style,
                       ),
                       CustomElevatedButton(
-                        title: widget.params.confirmButtonTitle,
+                        title: widget.params.confirmButtonTitle ??
+                            S.of(context).continue_button_text,
                         onPressed: _onConfirmTapped,
                         padding: const EdgeInsets.only(
                             right: Dimension.defaultPadding),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ProfileElement extends TabBarElement {
   ProfileElement()
       : super(
-          tabName: 'Profile',
+          tabName: S.current.profile,
           icon: Icons.supervised_user_circle,
           index: 1,
           navigator: const ProfileNavigator(),
