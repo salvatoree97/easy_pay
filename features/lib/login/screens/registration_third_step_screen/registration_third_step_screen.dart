@@ -52,7 +52,10 @@ class _RegistrationThirdStepScreenState
   }
 
   void _onCompleted() {
-    PackageConfiguration.navigationService.pushAndReplace(AppRoutes.tabScreen);
+    PackageConfiguration.navigationService.pushAndRemoveUntil(
+      AppRoutes.tabScreen,
+      (_) => false,
+    );
   }
 
   @override

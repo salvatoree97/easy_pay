@@ -32,6 +32,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _onLogoutTapped() {
+    PackageConfiguration.navigationService.push(
+      AppRoutes.optionSheet,
+      arguments: OptionBottomSheetParams(
+        title: 'Logout',
+        description:
+            'Premendo conferma uscirai dall\'app e dovrai rieffettuare l\'access. Sei sicuro di voler continuare?',
+        onConfirmTapped: _performLogout,
+      ),
+    );
+  }
+
+  void _performLogout() {
     FirebaseAuthService.instance.signOut();
     SchedulerBinding.instance?.addPostFrameCallback((_) {
       PackageConfiguration.navigationService.pushAndRemoveUntil(

@@ -98,7 +98,10 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onSuccess() {
-    PackageConfiguration.navigationService.pushAndReplace(AppRoutes.tabScreen);
+    PackageConfiguration.navigationService.pushAndRemoveUntil(
+      AppRoutes.tabScreen,
+      (_) => false,
+    );
   }
 
   void _onError() {}

@@ -22,7 +22,10 @@ class SplashScreen extends StatelessWidget {
     }
 
     void _onSuccess() {
-      NavigationService.instance.pushAndReplace(AppRoutes.tabScreen);
+      NavigationService.instance.pushAndRemoveUntil(
+        AppRoutes.tabScreen,
+        (_) => false,
+      );
     }
 
     return StoreConnector<AppState, UserState>(

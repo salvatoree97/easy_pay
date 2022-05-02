@@ -1,6 +1,7 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 
 class InitialScreen extends StatefulWidget {
   final bool goToLogin;
@@ -36,6 +37,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
+      statusBarStyle: SystemUiOverlayStyle.dark,
       incudeTopSafeArea: false,
       body: Container(
         color: Theme.of(context).colorScheme.background,

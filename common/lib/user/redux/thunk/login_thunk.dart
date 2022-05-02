@@ -90,9 +90,10 @@ Future _handleBiometricsFlow(String password) async {
       await PackageConfiguration.navigationService.push(
     AppRoutes.optionSheet,
     arguments: OptionBottomSheetParams(
-        description: 'Vuoi abilitare la biometria',
-        confirmButtonTitle: 'Conferma',
-        cancelButtonTitle: 'Annulla'),
+      title: 'Imposta la biometria',
+      description:
+          'Vuoi abilitare la biometria per accedere all\'app più velocemente.',
+    ),
   );
 
   if (canConfigureFaceId ?? false) {
